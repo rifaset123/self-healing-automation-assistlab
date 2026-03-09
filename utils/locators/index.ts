@@ -1,5 +1,6 @@
-import { loginLocators } from './loginLocators';
+import { loginLocators, loginUGMLocators } from "./loginLocators";
 
 export const locators = {
-      login: loginLocators,
+  login: loginLocators,
+  loginUGM: loginUGMLocators,
 };

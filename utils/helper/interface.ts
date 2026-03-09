@@ -1,6 +1,6 @@
 export interface UserCredentials {
   username: string;
-  password: string;
+  password?: string;
 }
 
 export interface EnvironmentConfig {
@@ -17,13 +17,10 @@ export interface Users {
 }
 
 export interface studentUser {
-  [key: string]: User; // Map-like structure (e.g., user1, user2)
+  [key: string]: User;
 }
 
 export interface User {
   username: string;
   password: string;
-  section: string;
-  clinic: string;
-  uid: string;
 }

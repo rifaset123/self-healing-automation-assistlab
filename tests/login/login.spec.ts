@@ -1,15 +1,12 @@
-import { test } from '../../fixture/authenticated.fixture';
-import { testData } from '../../data';
-import { Logger } from '../../utils/helper/logger';
-import { Pages } from '../../pages';
+import { test } from "../../fixture/authenticated.fixture";
+import { LoginPage } from "../../pages/loginPage";
 
-test.describe('Create and Verify New Patient Scenarios',() => {
-    test('[Automation] Login test google auth awikwok', async ({page, login}) => {
-        const logger = new Logger();
-        const pages = new Pages(page, logger);
+test("login test with storage", async ({ page, logger }) => {
+  const loginPage = new LoginPage(page, logger);
 
-        await test.step("Login", async () => {
-            await login(testData.users.student);
-        });
-    })
-})
+  await page.goto("/dashboard");
+
+  await test.step("Verify user already authenticated", async () => {
+    await page.waitForURL(/dashboard/);
+  });
+});
