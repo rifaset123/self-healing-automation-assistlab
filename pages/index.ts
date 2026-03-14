@@ -7,6 +7,5 @@ export class Pages {
 
     constructor(page: Page, logger: Logger) {
         this.basePage = new BasePage(page);
-
     }
 }
