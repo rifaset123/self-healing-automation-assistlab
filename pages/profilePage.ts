@@ -15,13 +15,6 @@ export class ProfilePage extends BasePage {
     this.locatorUtils = new LocatorUtils(logger);
   }
 
-  async navigateToProfile() {
-    await this.locatorUtils.click(
-      locators.profile.profileMenuButton(this.page),
-    );
-    await this.locatorUtils.click(locators.profile.profileButton(this.page));
-  }
-
   async verifyURLAndHeaderProfile() {
     const urlPattern = new RegExp(`${devConfig.baseURL}student/profile`);
     await this.page.waitForURL(urlPattern);

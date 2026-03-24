@@ -66,7 +66,6 @@ export class LoginPage extends BasePage {
   }
 
   async verifyLoginSuccess() {
-    await this.page.waitForURL(/student/);
     await expect(this.page).toHaveURL(/student/);
   }
 }

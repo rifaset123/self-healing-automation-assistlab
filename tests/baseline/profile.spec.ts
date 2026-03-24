@@ -4,6 +4,7 @@ import { ProfilePage } from "../../pages/profilePage";
 import path from "path";
 import { ProfileDataField } from "../../utils/helper/enum";
 import { KhsPage } from "../../pages/khsPage";
+import { DashboardPage } from "../../pages/dashboardPage";
 
 test("Fitur 1 : Melengkapi profil dan mengisi KHS", async ({
   page,
@@ -12,6 +13,7 @@ test("Fitur 1 : Melengkapi profil dan mengisi KHS", async ({
   const profilePage = new ProfilePage(page, logger);
   const loginPage = new LoginPage(page, logger);
   const khsPage = new KhsPage(page, logger);
+  const dashboardPage = new DashboardPage(page, logger);
 
   const photoPath = path.join(__dirname, "../assets/male-profile.jpg");
   const khsPath = path.join(__dirname, "../assets/khs-genap-2026.pdf");
@@ -40,7 +42,7 @@ test("Fitur 1 : Melengkapi profil dan mengisi KHS", async ({
   });
 
   await test.step("[TC01] Mengakses halaman profil", async () => {
-    await profilePage.navigateToProfile();
+    await dashboardPage.navigateToProfile();
     await profilePage.verifyURLAndHeaderProfile();
     logger.log("✅ Pengguna berhasil mengakses halaman profil");
   });

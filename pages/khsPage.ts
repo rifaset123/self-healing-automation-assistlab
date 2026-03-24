@@ -8,10 +8,12 @@ import path from "path";
 
 export class KhsPage extends BasePage {
   private locatorUtils: LocatorUtils;
+  private logger : Logger;
 
   constructor(page: Page, logger: Logger) {
     super(page);
     this.locatorUtils = new LocatorUtils(logger);
+    this.logger = logger;
   }
 
   async navigateToKhs() {
@@ -76,7 +78,7 @@ export class KhsPage extends BasePage {
 
     expect(columnValues).toEqual(sortedValues);
     // add log
-    console.log(`✅ Kolom ${columnName} telah terurut dengan benar, diawali dengan ${columnValues[0]}`);
+    this.logger.log(`✅ Kolom ${columnName} telah terurut dengan benar, diawali dengan ${columnValues[0].trim()}`);
   }
 
   async verifySearchFilter(search: string) {
