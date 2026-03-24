@@ -1,7 +1,8 @@
 {
   "users": {
     "student": {
-        "username": "rifaindrasetiawan@mail.ugm.ac.id"
+        "username": "rifaindrasetiawan@mail.ugm.ac.id",
+        "password": "password"
         }
     }
 }

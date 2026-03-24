@@ -20,6 +20,15 @@ export const test = base.extend<{
       logger.testStatus(TestStatus.SKIPPED);
     }
   },
+
+  context: async ({ browser }, use) => {
+    const context = await browser.newContext({
+      storageState: "data/user.json"
+    });
+
+    await use(context);
+    await context.close();
+  }
 });
 
 export { expect };

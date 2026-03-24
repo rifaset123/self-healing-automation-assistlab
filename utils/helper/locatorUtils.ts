@@ -1,6 +1,6 @@
 import { Locator, test } from "@playwright/test";
 import { Logger } from "./logger";
-
+import path from "path"
 export class LocatorUtils {
   private logger: Logger;
   private testName: string;
@@ -15,8 +15,10 @@ export class LocatorUtils {
     await this.assertVisible(locator, retries);
     for (let attempt = 1; attempt <= retries; attempt++) {
       try {
+        const elementText =
+          (await locator.textContent())?.replace(/\s+/g, " ").trim() || "N/A";
         this.logger.log(
-          `Attempt ${attempt}: Clicking element - ${await locator.textContent()}`
+          `Attempt ${attempt}: Clicking element - ${elementText}`,
         );
         await locator.click();
         return;
@@ -33,23 +35,23 @@ export class LocatorUtils {
   async selectDropDownOption(
     locator: Locator,
     selectedOption: string,
-    retries = 3
+    retries = 3,
   ) {
     for (let attempt = 1; attempt <= retries; attempt++) {
       try {
         this.logger.log(
-          `Attempt ${attempt}: Selecting option '${selectedOption}' from dropdown`
+          `Attempt ${attempt}: Selecting option '${selectedOption}' from dropdown`,
         );
         await locator.selectOption({ label: selectedOption });
         return;
       } catch (error) {
         this.logger.error(
-          `❌ Select option failed on attempt ${attempt}: ${error}`
+          `❌ Select option failed on attempt ${attempt}: ${error}`,
         );
         if (attempt === retries) {
           await this.captureFailureDetails(
             locator,
-            "Select Option Dropdown Failure"
+            "Select Option Dropdown Failure",
           );
           throw error;
         }
@@ -74,19 +76,37 @@ export class LocatorUtils {
     }
   }
 
+  async uploadFile(locator: Locator, filePath: string, retries = 3) {
+    for (let attempt = 1; attempt <= retries; attempt++) {
+      try {
+        await locator.setInputFiles(filePath);
+        this.logger.log(`✅ File uploaded: ${path.basename(filePath)}`);
+        return;
+      } catch (error) {
+        this.logger.error(`❌ Upload failed on attempt ${attempt}: ${error}`);
+        if (attempt === retries) {
+          await this.captureFailureDetails(locator, "File Upload Failure");
+          throw error;
+        }
+      }
+    }
+  }
+
   async assertVisible(locator: Locator, timeout = 90000) {
     try {
       await locator.waitFor({ state: "visible", timeout: 90000 });
-      this.logger.log(`✅ Element is visible: ${await locator.textContent()}`);
+      const elementText =
+        (await locator.textContent())?.replace(/\s+/g, " ").trim() || "N/A";
+      this.logger.log(`✅ Element is visible: ${elementText}`);
     } catch (error) {
       this.logger.error(
-        `❌ Element is NOT visible after ${timeout / 1000} seconds`
+        `❌ Element is NOT visible after ${timeout / 1000} seconds`,
       );
       await this.captureFailureDetails(locator, "Visibility Assertion Failure");
       throw new Error(
         `Element not visible: ${locator.toString()} | Error: ${
           error instanceof Error ? error.message : error
-        }`
+        }`,
       );
     }
   }
@@ -103,7 +123,7 @@ export class LocatorUtils {
     this.logger.error(`❌ Element is STILL VISIBLE after ${retries} attempts`);
     await this.captureFailureDetails(
       locator,
-      "Non-Visibility Assertion Failure"
+      "Non-Visibility Assertion Failure",
     );
     throw new Error(`Element is still visible: ${locator}`);
   }
