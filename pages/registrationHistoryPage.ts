@@ -54,9 +54,7 @@ export class RegistrationHistoryPage extends BasePage {
   }
 
   async verifyCourseRegistrationDetailStatus() {
-    await expect(
-      locators.assistant.courseRegistrationDetailStatus(this.page),
-    ).toBeVisible();
+    await expect(locators.assistant.courseRegistrationDetailStatus(this.page),).toBeVisible();
   }
 
   async selectPeriodRow(period: string) {

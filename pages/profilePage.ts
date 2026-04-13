@@ -105,10 +105,8 @@ export class ProfilePage extends BasePage {
       locators.profile.submitProfileButton(this.page),
     );
 
-    await this.locatorUtils.click(
-      locators.profile.submitProfileVerificationButton(this.page),
-    );
-
+    const confirmBtn = locators.profile.submitProfileVerificationButton(this.page);
+    await confirmBtn.click({ timeout: 15000 });
     // verifikasi profil terupdate
 
     await Promise.all([this.page.waitForURL(/\/student\/profile$/)]);

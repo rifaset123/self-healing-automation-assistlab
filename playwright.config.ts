@@ -41,8 +41,8 @@ export default defineConfig({
     storageState: "data/user.json",
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on-first-retry",
-    actionTimeout: 10 * 1000, // 10 detik per aksi
-    navigationTimeout: 20 * 1000, // 20 detik per navigasi
+    actionTimeout: 3 * 1000, // 3 detik per aksi
+    navigationTimeout: 15 * 1000, // 150 detik per navigasi
   },
 
   /* Configure projects for major browsers */

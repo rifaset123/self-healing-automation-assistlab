@@ -73,9 +73,17 @@ export class AssistantVacancyPage extends BasePage {
     ).toBeVisible();
   }
 
-  async verifyCourseStatusAvailable() {
-    await expect(locators.assistant.courseStatus(this.page)).toBeVisible();
+  async verifCourseHeader(courseDetail: string) {
+    await this.locatorUtils.assertVisible(
+      locators.assistant.courseDetailheader(this.page, courseDetail),
+    );
   }
+
+  async verifyCourseStatusAvailable() {
+    await this.locatorUtils.assertVisible(locators.assistant.courseStatus(this.page));
+    this.logger.log(`✅ Status lowongan asistensi tersedia`);
+  }
+
 
   async applyForAssistance() {
     await this.locatorUtils.click(
@@ -85,11 +93,12 @@ export class AssistantVacancyPage extends BasePage {
       locators.assistant.agreedVerificationButton(this.page),
     );
     this.logger.log(`📝 Mengajukan permohonan asistensi`);
+  }
+
+  async verifyAppliedAssistance(){
     // wait for 3 seccond
-    await this.page.waitForTimeout(3000);
-    await expect(
-      locators.assistant.verifySuccessApplyAssistance(this.page),
-    ).toBeVisible();
+    await this.page.waitForTimeout(2000);
+    await expect(locators.assistant.verifySuccessApplyAssistance(this.page),).toBeVisible();
   }
 
   async navigateToDashboard() {
@@ -105,9 +114,7 @@ export class AssistantVacancyPage extends BasePage {
       .assistantRegistrationStatusCard(this.page)
       .count();
     await expect(countRegistrationStatus).toBeGreaterThan(0);
-    this.logger.log(
-      `📝 Terdapat : ${countRegistrationStatus} status registrasi asistensi`,
-    );
+    this.logger.log(`📝 Terdapat : ${countRegistrationStatus} status registrasi asistensi`);
 
     await expect(
       locators.assistant.registrationStatusFromDashboard(
@@ -116,7 +123,7 @@ export class AssistantVacancyPage extends BasePage {
       ),
     ).toBeVisible();
     await expect(
-      locators.assistant.registrationStatus(this.page, courseClassCode),
+      locators.assistant.registrationStatus(this.page),
     ).toBeVisible();
   }
 

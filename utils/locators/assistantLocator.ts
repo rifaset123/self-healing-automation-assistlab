@@ -1,14 +1,12 @@
 import { Page } from "@playwright/test";
-import { error } from "console";
 
 export const assistantLocators = {
-  assistantVacancyListBtn: (page: Page) =>
-    page.getByTestId("assistant-vacancy-list"),
+  assistantVacancyListBtn: (page: Page) => page.getByTestId("assistant-vacancy-list"),
   assistantVacancyHeader: (page: Page) =>
     page.getByRole("heading", {
       name: "Lowongan Asistensi",
       level: 1,
-    }),
+    }), // DC
   assistantVacanciesAvailable: (page: Page) => page.locator(".card-course"),
   vacancyCourseName: (page: Page, courseClassCode: string) =>
     page
@@ -26,59 +24,49 @@ export const assistantLocators = {
     page
       .locator("dt", { hasText: label })
       .locator("xpath=following-sibling::dd[1]")
-      .filter({ hasText: detail }),
-  courseStatus: (page: Page) =>
-    page.getByTestId("course-status").filter({ hasText: /Tersedia/ }),
+      .filter({ hasText: detail }), // DC
+  courseStatus: (page: Page) => page.getByTestId("course-status").filter({ hasText: /Tersedia/ }),
   applyAssistanceButton: (page: Page) => page.locator("#submitBtn"),
-  agreedVerificationButton: (page: Page) =>
-    page.getByRole("button", { name: "Ya, Saya Yakin" }),
-  verifySuccessApplyAssistance: (page: Page) =>
-    page.getByText(/Berhasil melakukan pendaftaran asistensi/),
+  agreedVerificationButton: (page: Page) => page.getByRole("button", { name: "Ya, Saya Yakin" }), // LC
+  verifySuccessApplyAssistance: (page: Page) => page.getByText(/Berhasil melakukan pendaftaran asistensi/), // DC
 
   // halaman dashboard setelah mendaftar asistensi
   sidebarDashboardButton: (page: Page) => page.getByTestId("sidebar-dashboard"),
-  assistantRegistrationStatusCard: (page: Page) =>
-    page.getByTestId("card-registration-status"),
+  assistantRegistrationStatusCard: (page: Page) => page.getByTestId("card-registration-status"), // LC
   registrationStatusFromDashboard: (page: Page, courseClassCode: string) =>
     assistantLocators
       .assistantRegistrationStatusCard(page)
       .filter({ has: page.getByText(courseClassCode) }),
-  registrationStatus: (page: Page, courseClassCode: string) =>
+  registrationStatus: (page: Page) =>
     assistantLocators
-      .registrationStatusFromDashboard(page, courseClassCode)
+      .assistantRegistrationStatusCard(page) // DC, menambah ambiguitas ketika mendaftar 2 lowongan
       // Diproses|Diterima|Ditolak|Menerima|Menolak|Ditawarkan
       .filter({ hasText: /Diproses/ }),
   seeRegistrationDetailButton: (page: Page, courseClassCode: string) =>
     assistantLocators
       .registrationStatusFromDashboard(page, courseClassCode)
       .getByTestId("see-registration-details"),
-  errorMessageAlreadyApplied: (page: Page) =>
-    page.getByText(/You have already applied for this course/),
+  errorMessageAlreadyApplied: (page: Page) => page.getByText(/You have already applied for this course/),
 
   // halaman riwayat pendaftaran asistensi
-  sidebarRegistrationHistoryButton: (page: Page) =>
-    page.getByTestId("sidebar-registration-history"),
+  sidebarRegistrationHistoryButton: (page: Page) => page.getByTestId("sidebar-registration-history"),
   courseRegistrationDetailStatus: (page: Page) =>
     page
       .getByTestId("course-registration-status")
       .filter({ hasText: /Diproses/ }),
-  periodRegistrationRow: (page: Page, period: string) =>
+  periodRegistrationRow: (page: Page, period: string) => // DC
     page
       .locator("tbody tr")
       .filter({ has: page.getByText(period) })
       .locator('button[type="button"]'),
-  registrationListRow: (
-    page: Page,
-    courseAbbrevation: string,
-    courseClass: string,
-    status: string,
-  ) =>
+  registrationListRow: (page: Page, courseAbbrevation: string, courseClass: string, status: string,) =>
     page
       .locator("tbody tr")
       .filter({
-        has: page.getByText(courseAbbrevation && courseClass && status),
+        has: page.getByText(courseAbbrevation && courseClass && status), // DC, terjadi ambigu di status jika ada 2 lowongan
       })
       .locator('button[type="button"]'),
+  courseDetailheader: (page: Page, courseName: string) => page.locator("dt", { hasText: courseName }), // DC
 
   // penawaran asistensi
   assistanceOffering: (page: Page, courseClassCode: string) =>
@@ -88,7 +76,6 @@ export const assistantLocators = {
   rejectAssistanceOfferingButton: (page: Page, courseClassCode: string) =>
     assistantLocators
       .assistanceOffering(page, courseClassCode)
-      .getByRole("button", { name: "Tolak" }),
+      .locator("xpath=.//button[contains(text(), 'Tolak')]"), // DC dan LC
   navigateToOfferingPage: (page: Page) => page.getByTestId("sidebar-offering"),
-
 };

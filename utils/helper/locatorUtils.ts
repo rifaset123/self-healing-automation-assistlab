@@ -12,20 +12,20 @@ export class LocatorUtils {
   }
 
   async click(locator: Locator, retries = 3) {
-    await this.assertVisible(locator, retries);
+    await this.assertVisible(locator);
     for (let attempt = 1; attempt <= retries; attempt++) {
       try {
         const elementText =
           (await locator.textContent())?.replace(/\s+/g, " ").trim() || "N/A";
         this.logger.log(
-          `Attempt ${attempt}: Clicking element - ${elementText}`,
+          `Percobaan ${attempt}: Menekan element - ${elementText}`,
         );
         await locator.click();
         return;
       } catch (error) {
-        this.logger.error(`❌ Click failed on attempt ${attempt}: ${error}`);
+        this.logger.error(`❌ Gagal menekan element pada percobaan ${attempt}: ${error}`);
         if (attempt === retries) {
-          await this.captureFailureDetails(locator, "Click Failure");
+          await this.captureFailureDetails(locator, "Kegagalan klik");
           throw error;
         }
       }
@@ -40,18 +40,18 @@ export class LocatorUtils {
     for (let attempt = 1; attempt <= retries; attempt++) {
       try {
         this.logger.log(
-          `Attempt ${attempt}: Selecting option '${selectedOption}' from dropdown`,
+          `Percobaan ${attempt}: Memilih opsi '${selectedOption}' dari dropdown`,
         );
         await locator.selectOption({ label: selectedOption });
         return;
       } catch (error) {
         this.logger.error(
-          `❌ Select option failed on attempt ${attempt}: ${error}`,
+          `❌ Gagal memilih opsi pada percobaan ${attempt}: ${error}`,
         );
         if (attempt === retries) {
           await this.captureFailureDetails(
             locator,
-            "Select Option Dropdown Failure",
+            "Kegagalan memilih opsi dropdown",
           );
           throw error;
         }
@@ -60,16 +60,16 @@ export class LocatorUtils {
   }
 
   async fill(locator: Locator, text: string, retries = 3) {
-    await this.assertVisible(locator, retries);
+    await this.assertVisible(locator);
     for (let attempt = 1; attempt <= retries; attempt++) {
       try {
-        this.logger.log(`Attempt ${attempt}: Filling input with: ${text}`);
+        this.logger.log(`Percobaan ${attempt}: Mengisi input dengan: ${text}`);
         await locator.fill(text);
         return;
       } catch (error) {
-        this.logger.error(`❌ Fill failed on attempt ${attempt}: ${error}`);
+        this.logger.error(`❌ Gagal mengisi input pada percobaan ${attempt}: ${error}`);
         if (attempt === retries) {
-          await this.captureFailureDetails(locator, "Fill Failure");
+          await this.captureFailureDetails(locator, "Kegagalan mengisi input");
           throw error;
         }
       }
@@ -80,29 +80,29 @@ export class LocatorUtils {
     for (let attempt = 1; attempt <= retries; attempt++) {
       try {
         await locator.setInputFiles(filePath);
-        this.logger.log(`✅ File uploaded: ${path.basename(filePath)}`);
+        this.logger.log(`✅ File diunggah: ${path.basename(filePath)}`);
         return;
       } catch (error) {
-        this.logger.error(`❌ Upload failed on attempt ${attempt}: ${error}`);
+        this.logger.error(`❌ Gagal mengunggah file pada percobaan ${attempt}: ${error}`);
         if (attempt === retries) {
-          await this.captureFailureDetails(locator, "File Upload Failure");
+          await this.captureFailureDetails(locator, "Kegagalan mengunggah file");
           throw error;
         }
       }
     }
   }
 
-  async assertVisible(locator: Locator, timeout = 90000) {
+  async assertVisible(locator: Locator, timeout = 10000) {
     try {
-      await locator.waitFor({ state: "visible", timeout: 90000 });
+      await locator.waitFor({ state: "visible", timeout });
       const elementText =
         (await locator.textContent())?.replace(/\s+/g, " ").trim() || "N/A";
-      this.logger.log(`✅ Element is visible: ${elementText}`);
+      this.logger.log(`✅ Element terlihat: ${elementText}`);
     } catch (error) {
       this.logger.error(
-        `❌ Element is NOT visible after ${timeout / 1000} seconds`,
+        `❌ Element TIDAK terlihat setelah ${timeout / 1000} detik!`,
       );
-      await this.captureFailureDetails(locator, "Visibility Assertion Failure");
+      await this.captureFailureDetails(locator, "Kegagalan Visibility Assertion");
       throw new Error(
         `Element not visible: ${locator.toString()} | Error: ${
           error instanceof Error ? error.message : error
@@ -113,22 +113,22 @@ export class LocatorUtils {
   async assertNotVisible(locator: Locator, retries = 3) {
     for (let attempt = 1; attempt <= retries; attempt++) {
       if (!(await locator.isVisible())) {
-        this.logger.log(`✅ Element is NOT visible as expected.`);
+        this.logger.log(`✅ Element TIDAK terlihat seperti yang diharapkan`);
         return;
       } else {
-        this.logger.warn(`⚠️ Attempt ${attempt}: Element is still visible`);
+        this.logger.warn(`⚠️ Percobaan ${attempt}: Element tetap tidak terlihat`);
       }
       await new Promise((resolve) => setTimeout(resolve, 4000));
     }
-    this.logger.error(`❌ Element is STILL VISIBLE after ${retries} attempts`);
+    this.logger.error(`❌ Element MASIH TIDAK TERLIHAT setelah ${retries} percobaan!`);
     await this.captureFailureDetails(
       locator,
-      "Non-Visibility Assertion Failure",
+      "Kegagalan Non-Visibility Assertion",
     );
-    throw new Error(`Element is still visible: ${locator}`);
+    throw new Error(`Element masih terlihat: ${locator}`);
   }
 
-  /** Captures a screenshot and attaches it to Allure */
+  /** mengambil screenshot */
   private async captureFailureDetails(locator: Locator, action: string) {
     try {
       const screenshot = await locator.screenshot();
@@ -136,9 +136,9 @@ export class LocatorUtils {
         body: screenshot,
         contentType: "image/png",
       });
-      this.logger.error(`📸 Screenshot captured for ${action}`);
+      this.logger.error(`📸 Screenshot diambil untuk aksi ${action}`);
     } catch (error) {
-      this.logger.error(`❌ Failed to capture screenshot: ${error}`);
+      this.logger.error(`❌ Gagal mengambil screenshot: ${error}`);
     }
   }
 }

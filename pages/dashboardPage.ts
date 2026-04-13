@@ -49,9 +49,9 @@ export class DashboardPage extends BasePage {
 
   // menolak penawaran lewat dashboard
   async verifyAssistanceOffering(courseClassCode: string) {
-    await expect(
-      locators.assistant.assistanceOffering(this.page, courseClassCode),
-    ).toBeVisible();
+    await this.locatorUtils.assertVisible(locators.assistant.assistanceOffering(this.page, courseClassCode));
+    await this.page.waitForTimeout(2000);
+    this.logger.log(`✅ Menemukan tawaran asistensi untuk kelas ${courseClassCode} di dashboard`);
   }
 
   async rejectAssistanceOffering(courseClassCode: string) {
@@ -61,8 +61,9 @@ export class DashboardPage extends BasePage {
         courseClassCode,
       ),
     );
-    await this.locatorUtils.click(
-      locators.assistant.agreedVerificationButton(this.page),
-    );
+
+
+    const confirmBtn = locators.assistant.agreedVerificationButton(this.page);
+    await confirmBtn.click({ timeout: 10000 });
   }
 }

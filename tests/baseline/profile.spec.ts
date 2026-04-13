@@ -31,14 +31,14 @@ test("Fitur 1 : Melengkapi profil dan mengisi KHS", async ({
     bank: "BCA",
     nama_rekening: ProfileDataField.NAME,
     no_rekening: "1234567890",
-    link_tabungan: "https://drive.google.com/...",
+    link_tabungan: "https://drive.google.com/testdrive",
   };
 
   await page.goto("/student/");
 
-  await test.step("Pengguna mengakses halaman dashboard AsLab", async () => {
+  await test.step("Pengguna mengakses halaman dashboard AssistLab", async () => {
     await loginPage.verifyLoginSuccess();
-    logger.log("✅ Pengguna berhasil mengakses halaman dashboard AsLab");
+    logger.log("✅ Pengguna berhasil mengakses halaman dashboard AssistLab");
   });
 
   await test.step("[TC01] Mengakses halaman profil", async () => {
@@ -69,7 +69,7 @@ test("Fitur 1 : Melengkapi profil dan mengisi KHS", async ({
     logger.log("✅ Pengguna mengakses halaman KHS");
   });
 
-  await test.step("[TC06] Melengkapi KHS", async () => {
+  await test.step("[TC06] Menambahkan KHS", async () => {
     await khsPage.navigateToAddKhsDocument();
     await khsPage.uploadKhsDocument(khsPath);
     await khsPage.verifySuccessUploadKhs(profileData.nama);

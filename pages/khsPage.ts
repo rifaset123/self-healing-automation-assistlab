@@ -41,8 +41,8 @@ export class KhsPage extends BasePage {
     await expect(locators.khs.uploadedKhsFileName(this.page)).toHaveText(
       new RegExp(fileName),
     );
-
-    await this.locatorUtils.click(locators.khs.submitKhsButton(this.page));
+    const submitKHSbtn = locators.khs.submitKhsButton(this.page);
+    await submitKHSbtn.click({ timeout: 15000 })
   }
 
   async verifySuccessUploadKhs(owner: string) {
@@ -55,7 +55,7 @@ export class KhsPage extends BasePage {
 
   async verifySortFilter(columnName: string) {
     await this.locatorUtils.click(
-      locators.khs.verifySortFilter(this.page, columnName),
+      locators.khs.verifySortFilter(this.page),
     );
 
     // Verifikasi data terurut
