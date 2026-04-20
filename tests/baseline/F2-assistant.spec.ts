@@ -52,7 +52,7 @@ test("Fitur 2 : Melihat asistensi, mendaftar asistensi, dan menolak penawaran as
   });
 
   await test.step(`[TC10] Mendaftar asistensi pada kelas ${courseDetail.courseClassCode}`, async () => {
-    await assistantPage.applyForAssistance(courseDetail.courseClassCode);
+    await assistantPage.applyForAssistance();
     await assistantPage.verifyAppliedAssistance();
     logger.log(`✅ Pengguna berhasil mendaftar asistensi pada kelas ${courseDetail.courseClassCode}`,);
   });
@@ -81,11 +81,10 @@ test("Fitur 2 : Melihat asistensi, mendaftar asistensi, dan menolak penawaran as
   await test.step("[TC13] Mendaftar ke lowongan asistensi yang sama", async () => {
     await assistantPage.navigateToDashboard();
     await dashboardPage.navigateToVacancyPage();
-    await assistantPage.verifyURLAndHeaderVacancy();
     await assistantPage.clickSeeDetailsByCourseClassCode(courseDetail.courseClassCode);
     await assistantPage.verifyVacancyDetailPage(courseDetail.courseAbbreviation, courseDetail.courseCode, courseDetail.courseClassCode,);
     await assistantPage.verifyCourseStatusAvailable();
-    await assistantPage.applyForAssistance(courseDetail.courseCode,);
+    await assistantPage.applyForAssistance();
     // menampilkan error message karena mendaftar ke lowongan asistensi yang sama
     await assistantPage.verifyAlreadyAppliedErrorMessage();
   });

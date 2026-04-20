@@ -82,6 +82,5 @@ export const assistantLocators = {
     page
       .getByTestId("registration-status")
       .filter({ hasText: "Menolak" }),
-  // offeringHeader: (page: Page) => page.getByRole("heading", { name: "Penawaran Asistensi", level: 1 }), // DC
-  offeringHeader: (page: Page) => page.getByTestId("offering-header"), // DC
+  offeringHeader: (page: Page) => page.getByRole("heading", { name: "Penawaran Asistensi", level: 1 }), // DC
 };

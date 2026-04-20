@@ -83,7 +83,8 @@ export class AssistantVacancyPage extends BasePage {
   }
 
 
-  async applyForAssistance(courseClassCode: string) {
+  async applyForAssistance() {
+    await this.page.waitForTimeout(2000);
     await this.locatorUtils.click(
       locators.assistant.applyAssistanceButton(this.page),
     );
