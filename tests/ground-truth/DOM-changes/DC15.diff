@@ -1,0 +1,26 @@
+DC15 — Header halaman penawaran asistensi
+═══════════════════════════════
+
+INFORMASI
+- adalah Baseline
++ adalah Ground Truth
+
+File: locators/assistantLocators.ts
+─────────────────────────────────
+- offeringHeader: (page: Page) => page.getByRole("heading", { name: "Penawaran Asistensi", level: 1 }), // DC
+
++ offeringHeader: (page: Page) => page.getByTestId("offering-header")
+
+
+Perubahan pada SUT
+═══════════════════════════════
+
+INFORMASI SUT
+- adalah Baseline
++ adalah Kode dengan injeksi gangguan
+
+File: AssistLab-Frontend-main/resources/views/student/assistance_offer/index.blade.php
+─────────────────────────────────
+- <h1 class="text-lg font-medium text-[#2AC5AC] mb-8">🚨 Penawaran Asistensi</h1>
+
++ <h1 class="text-lg font-medium text-[#2AC5AC] mb-8" data-testid="offering-header">🚨 Tawaran Asistensi Untukmu</h1>

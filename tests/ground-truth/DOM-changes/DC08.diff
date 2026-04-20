@@ -1,0 +1,53 @@
+DC08 — Header lowongan asistensi
+═══════════════════════════════
+
+INFORMASI
+- adalah Baseline
++ adalah Ground Truth
+
+File: locators/assistantLocators.ts
+─────────────────────────────────
+-  assistantVacancyHeader: (page: Page) =>
+-    page.getByRole("heading", {
+-      name: "Lowongan Asistensi",
+-      level: 1,
+-    })
+
++  assistantVacancyHeader: (page: Page) =>
++    page.getByRole("heading", {
++      name: "Lowongan Asistensi",
++      level: 3,
++    })
+
+File: pages/assistantVacancyPage.ts
+─────────────────────────────────
+- async verifyURLAndHeaderVacancy() {
+-   ...
+-   expect(locators.assistant.assistantVacancyHeader(this.page),).toBeVisible();
+- }
+
++ async verifyURLAndHeaderVacancy() {
++   ...
++   await this.locatorUtils.assertVisible(locators.assistant.assistantVacancyHeader(this.page))
++ }
+
+Perubahan pada SUT
+═══════════════════════════════
+
+INFORMASI SUT
+- adalah Baseline
++ adalah Kode dengan injeksi gangguan
+
+File: AssistLab-Frontend-main/resources/views/student/dashboard/assistance_vacancies.blade.php
+─────────────────────────────────
+- <h1 class="text-lg font-semibold text-[#2AC5AC]">
+-     Lowongan Asistensi
+- </h1>
+
++ <section class="w-full" x-data="{ headingReady: false }" x-init="setTimeout(() => headingReady = true, 2000)">
++     <template x-if="headingReady">
++         <h3 class="text-lg font-semibold text-[#2AC5AC]">
++             Lowongan Asistensi
++         </h3>
++     </template>
++ </section>

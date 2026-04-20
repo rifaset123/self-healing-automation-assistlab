@@ -13,7 +13,7 @@ export const khsLocators = {
       level: 2,
     }),
   uploadKhsInput: (page: Page) => page.locator("input[type='file']#khsFile"),
-  uploadedKhsFileName: (page: Page) => page.locator("p[x-text='file.name']"),
+  uploadedKhsFileName: (page: Page, filename: string) => page.locator("p[x-text='file.name']").filter({ hasText: filename }),
   submitKhsButton: (page: Page) => page.getByRole("button", { name: "Kirim" }),
   verifySuccessUploadKhs: (page: Page) => page.getByText(/Dokumen berhasil diproses!/),
   verifyKhsDocumentOwner(page: Page, ownerName: string) {

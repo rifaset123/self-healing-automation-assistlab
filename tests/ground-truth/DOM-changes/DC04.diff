@@ -1,0 +1,44 @@
+DC04 — Mengisi Data Profil
+═══════════════════════════════
+
+INFORMASI
+- adalah Baseline
++ adalah Ground Truth
+
+File: locators/profileLocators.ts
+─────────────────────────────────
+- addressInput: (page: Page) => page.locator(`#address`),
+- phoneNumberInput: (page: Page) => page.locator(`#phone`), 
+
++ addressInput: (page: Page) => page.locator(`input[name="address"]`),
++ phoneNumberInput: (page: Page) => page.locator(`input[name="phone"]`),
+
+
+Perubahan pada SUT
+═══════════════════════════════
+
+INFORMASI SUT
+- adalah Baseline
++ adalah Kode dengan injeksi gangguan
+
+File: AssistLab-Frontend-main/resources/views/student/profile/edit.blade.php
+─────────────────────────────────
+- 
+-
+
++ <div class="sm:col-span-3">
++     <label for="phone" class="block text-sm/6 font-medium text-gray-900">Nomor
++         Handphone Orang Tua</label>
++     <div class="mt-2">
++         <input type="text" name="phone_parent" id="phone" value="{{ old('phone', $profile['phone_number']) }}" placeholder="Contoh: 08123456789"
++             class="block w-full rounded-md bg-white border-gray-300 px-3 py-1.5 text-base text-gray-900 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-[#2AC5AC] sm:text-sm/6">
++     </div>
++ </div>
++
++ <div class="sm:col-span-3">
++     <label for="address" class="block text-sm/6 font-medium text-gray-900">Domisili</label>
++     <div class="mt-2">
++         <input type="text" name="domicile" id="address" value="{{ old('address', $profile['address']) }}" placeholder="Masukkan domisili Anda"
++             class="block w-full rounded-md bg-white border-gray-300 px-3 py-1.5 text-base text-gray-900 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-[#2AC5AC] sm:text-sm/6">
++     </div>
++ </div>

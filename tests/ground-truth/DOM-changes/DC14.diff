@@ -1,0 +1,38 @@
+DC14 — Tombol daftar lowongan asistensi
+═══════════════════════════════
+
+INFORMASI
+- adalah Baseline
++ adalah Ground Truth
+
+File: locators/assistantLocators.ts
+─────────────────────────────────
+- rejectAssistanceOfferingButton: (page: Page, courseClassCode: string) =>
+-    assistantLocators
+-      .assistanceOffering(page, courseClassCode)
+-      .locator("xpath=.//button[contains(text(), 'Tolak')]")
+
++ rejectAssistanceOfferingButton: (page: Page, courseClassCode: string) =>
++    assistantLocators
++      .assistanceOffering(page, courseClassCode)
++      .getByRole("button", { name : "Tolak"}),
+
+
+Perubahan pada SUT
+═══════════════════════════════
+
+INFORMASI SUT
+- adalah Baseline
++ adalah Kode dengan injeksi gangguan
+
+File: AssistLab-Frontend-main/resources/views/student/dashboard/index.blade.php
+─────────────────────────────────
+- <button type="button" data-modal-target="modal-reject-{{$i}}" data-modal-toggle="modal-reject-{{$i}}"
+-   class="shadow-md text-white text-xs bg-[#FF0000] hover:bg-[#0C003F] cursor-pointer focus:ring-4 focus:ring-blue-300 font-semibold rounded-lg px-8 py-4 me-2 mb-2">
+-   Tolak
+- </button>
+
++ <button type="button" data-modal-target="modal-reject-{{$i}}" data-modal-toggle="modal-reject-{{$i}}"
++   class="shadow-md text-white text-xs bg-[#FF0000] hover:bg-[#0C003F] cursor-pointer focus:ring-4 focus:ring-blue-300 font-semibold rounded-lg px-8 py-4 me-2 mb-2">
++   <span>Tolak</span>
++ </button>

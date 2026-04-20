@@ -1,0 +1,60 @@
+DC09 — Detail lowongan asistensi
+═══════════════════════════════
+
+INFORMASI
+- adalah Baseline
++ adalah Ground Truth
+
+File: locators/assistantLocators.ts
+─────────────────────────────────
+- courseDetailFieldValue: (page: Page, label: string, detail: string) =>
+-   page
+-     .locator("dt", { hasText: label })
+-     .locator("xpath=following-sibling::dd[1]")
+-     .filter({ hasText: detail }),
+
++ courseDetailFieldValue: (page: Page, label: string, detail: string) =>
++    page
++      .getByText(label)
++      .locator('xpath=ancestor::div[contains(@class,"grid")]')
++      .locator('dd')
++      .filter({ hasText: detail }),
+
+Perubahan pada SUT
+═══════════════════════════════
+
+INFORMASI SUT
+- adalah Baseline
++ adalah Kode dengan injeksi gangguan
+
+File: AssistLab-Frontend-main/resources/views/student/dashboard/course_details.blade.php
+─────────────────────────────────
+- <dt class="font-medium text-gray-900">Singkatan Matkul</dt>
+- <dd class="text-gray-700 sm:col-span-2">{{ $data['singkat_mk'] ?? '-' }}</dd>
+- ...
+- <dt class="font-medium text-gray-900">>Kode Matkul</dt>
+- <dd class="text-gray-700 sm:col-span-2">{{ $data['kode_mk'] ?? '-' }}</dd>
+- ...
+- <dt class="font-medium text-gray-900">>Semester</dt>
+- <dd class="text-gray-700 sm:col-span-2">Semester {{ $data['semester'] ?? '-' }}</dd>
+
++ <div class="col-span-1">
++     <dt class="font-medium text-gray-900">Singkatan Matkul</dt>
++ </div>
++ <div class="col-span-2">
++     <dd class="text-gray-700 sm:col-span-2">{{ $data['singkat_mk'] ?? '-' }}</dd>
++ </div>
++ ...
++ <div class="col-span-1">
++     <dt class="font-medium text-gray-900">Kode Matkul</dt>
++ </div>
++ <div class="col-span-2">
++     <dd class="text-gray-700 sm:col-span-2">{{ $data['kode_mk'] ?? '-' }}</dd>
++ </div>
++ ...
++ <div class="col-span-1">
++     <dt class="font-medium text-gray-900">Semester</dt>
++ </div>
++ <div class="col-span-2">
++     <dd class="text-gray-700 sm:col-span-2">Semester {{ $data['semester'] ?? '-' }}</dd>
++ </div>

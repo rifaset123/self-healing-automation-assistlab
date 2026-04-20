@@ -1,0 +1,47 @@
+DC06 — Preview nama file KHS
+═══════════════════════════════
+
+INFORMASI
+- adalah Baseline
++ adalah Ground Truth
+
+File: locators/khsLocators.ts
+─────────────────────────────────
+- uploadedKhsFileName: (page: Page, filename: string) => page.locator("p[x-text='file.name']").filter({ hasText: filename }),
+
++ uploadedKhsFileName: (page: Page) => page.getByTestId("khs-file-name"),
+
+File: pages/khsPage.ts
+─────────────────────────────────
+- async uploadKhsDocument(filePath: string) {
+-    const fileName = path.basename(filePath);
+- 
+-    await this.locatorUtils.uploadFile(...);
+-    await this.locatorUtils.assertVisible(locators.khs.uploadedKhsFileName(this.page, fileName))
+-    ...
+- }
+
++ async uploadKhsDocument(filePath: string) {
++    const fileName = path.basename(filePath);
++    const nameOnly = fileName.replace('.pdf', '');
++ 
++    await this.locatorUtils.uploadFile(...);
++    await expect(locators.khs.uploadedKhsFileName(this.page)).toContainText(fileName);
++    await submitKHSbtn.click()
++ }
+
+Perubahan pada SUT
+═══════════════════════════════
+
+INFORMASI SUT
+- adalah Baseline
++ adalah Kode dengan injeksi gangguan
+
+File: AssistLab-Frontend-main/resources/views/student/khs_transkrip/add_khs.blade.php
+─────────────────────────────────
+- <p class="font-medium" x-text="file.name"></p>
+
++ <div class="font-medium" data-testid="khs-file-name">
++     <span x-text="file.name.substring(0, file.name.lastIndexOf('.'))"></span>
++     <span x-text="file.name.substring(file.name.lastIndexOf('.'))"></span>
++ </div>

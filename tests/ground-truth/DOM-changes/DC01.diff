@@ -1,0 +1,33 @@
+DC01 — Menu profil
+═══════════════════════════════
+
+INFORMASI
+- adalah Baseline
++ adalah Ground Truth
+
+File: locators/profileLocators.ts
+─────────────────────────────────
+- profileMenuButton: (page: Page) => page.locator('button[data-dropdown-toggle="dropdown-user"]')
+
++ profileMenuButton: (page: Page) => page.getbyTestId("user-menu-btn")
+
+Perubahan pada SUT
+═══════════════════════════════
+
+INFORMASI SUT
+- adalah Baseline
++ adalah Kode dengan injeksi gangguan
+
+File: AssistLab-Frontend-main/resources/views/layouts/navbar.blade.php
+─────────────────────────────────
+- <button type="button" class="flex gap-3 text-sm rounded-xl cursor-pointer" aria-expanded="false" 
+-   data-dropdown-toggle="dropdown-user" data-testid="user-menu-btn">
+- ...
+- </button>
+
++ <div data-dropdown-toggle="dropdown-user">
++   <button type="button" class="flex gap-3 text-sm rounded-xl cursor-pointer" aria-expanded="false"
++       data-testid="user-menu-btn">
++     ...
++   </button>
++ </div>

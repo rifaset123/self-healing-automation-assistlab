@@ -42,9 +42,9 @@ export class DashboardPage extends BasePage {
 
   async verifyRegistrationHistoryPage() {
     await expect(this.page).toHaveURL(`${devConfig.baseURL}student/history`);
-    await expect(
+    await this.locatorUtils.assertVisible(
       locators.assistant.pageDetailHeading(this.page, "📜 Riwayat Pendaftaran"),
-    ).toBeVisible();
+    );
   }
 
   // menolak penawaran lewat dashboard
@@ -65,5 +65,9 @@ export class DashboardPage extends BasePage {
 
     const confirmBtn = locators.assistant.agreedVerificationButton(this.page);
     await confirmBtn.click({ timeout: 10000 });
+  }
+
+  async verifyRejectOfferingStatus() {
+    await this.locatorUtils.assertVisible(locators.assistant.verifyRejectOfferingStatus(this.page));
   }
 }

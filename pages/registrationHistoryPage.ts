@@ -30,31 +30,31 @@ export class RegistrationHistoryPage extends BasePage {
     courseCode: string,
     courseClassCode: string,
   ) {
-    await expect(
+    await this.locatorUtils.assertVisible(
       locators.assistant.courseDetailFieldValue(
         this.page,
         "Singkatan Matkul",
         courseAbbreviation,
       ),
-    ).toBeVisible();
-    await expect(
+    );
+    await this.locatorUtils.assertVisible(
       locators.assistant.courseDetailFieldValue(
         this.page,
         "Kode Matkul",
         courseCode,
       ),
-    ).toBeVisible();
-    await expect(
+    );
+    await this.locatorUtils.assertVisible(
       locators.assistant.courseDetailFieldValue(
         this.page,
         "Kelas",
         courseClassCode,
       ),
-    ).toBeVisible();
+    );
   }
 
   async verifyCourseRegistrationDetailStatus() {
-    await expect(locators.assistant.courseRegistrationDetailStatus(this.page),).toBeVisible();
+    await this.locatorUtils.assertVisible(locators.assistant.courseRegistrationDetailStatus(this.page),);
   }
 
   async selectPeriodRow(period: string) {

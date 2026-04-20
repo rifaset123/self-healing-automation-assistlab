@@ -6,9 +6,8 @@ export class LocatorUtils {
   private testName: string;
 
   constructor(logger: Logger, testName?: string) {
-    // ✅ testName is now optional
     this.logger = logger;
-    this.testName = testName || "DefaultTest"; // ✅ Use default name if not provided
+    this.testName = testName || "DefaultTest";
   }
 
   async click(locator: Locator, retries = 3) {

@@ -1,0 +1,71 @@
+DC03 — Tombol unggah foto profil
+═══════════════════════════════
+
+INFORMASI
+- adalah Baseline
++ adalah Ground Truth
+
+File: locators/profileLocators.ts
+─────────────────────────────────
+- 
+
++ uploadPhotoButton: (page: Page) => page.locator(".uploadBtn"),
+
+File: pages/profilePage.ts
+─────────────────────────────────
+- 
+
++ async confirmUploadPhotoBtn() {
++    await this.locatorUtils.click(locators.profile.uploadPhotoButton(this.page));
++  }
+
+File: tests/baseline/profile.spec.ts
+─────────────────────────────────
+- await test.step("[TC03] Mengunggah foto mahasiswa", async () => {
+-    await profilePage.uploadProfilePhoto(photoPath);
+-    await profilePage.verifySuccessUploadProfilePhoto(photoPath);
+-    logger.log("✅ Pengguna berhasil mengunggah foto profil");
+-}
+
++ await test.step("[TC03] Mengunggah foto mahasiswa", async () => {
++    await profilePage.uploadProfilePhoto(photoPath);
++    await profilePage.confirmUploadPhotoBtn();
++    await profilePage.verifySuccessUploadProfilePhoto(photoPath);
++    logger.log("✅ Pengguna berhasil mengunggah foto profil");
++}
+
+Perubahan pada SUT
+═══════════════════════════════
+
+INFORMASI SUT
+- adalah Baseline
++ adalah Kode dengan injeksi gangguan
+
+File: AssistLab-Frontend-main/resources/views/student/profile/edit.blade.php
+─────────────────────────────────
+- <input onchange="loadFile(event)" name="image" accept="image/*"
+- ...
+- <script>
+-   var loadFile = function() {...};
+- ...
+-   output.src = URL.createObjectURL(event.target.files[0]);
+- </script>
+
++ <input onchange="handleFileSelected(event)" name="image" accept="image/*"
++ ... 
++ <button type="button" id="uploadBtn" class="hidden bg-[#0C003F] cursor-pointer hover:bg-blue-800 text-white font-semibold py-2 px-4 rounded-lg"
++                                    onclick="loadFile()">Upload</button>
++ ,,,
++ <script>
++   var handleFileSelected = function(event) {
++       if (input.files.length > 0) {
++                document.getElementById('uploadBtn').classList.remove('hidden');
++            }
++           };
++
++           var loadFile = function() {...}
++ ...
++   output.src = URL.createObjectURL(file);
++ ...
++   document.getElementById('uploadBtn').classList.add('hidden');
++ </script>

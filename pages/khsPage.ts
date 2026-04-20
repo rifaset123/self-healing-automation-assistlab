@@ -23,34 +23,32 @@ export class KhsPage extends BasePage {
   async verifyURLAndHeaderKhs() {
     const urlPattern = new RegExp(`${devConfig.baseURL}student/document`);
     await this.page.waitForURL(urlPattern);
-    await expect(locators.khs.khsHeader(this.page)).toBeVisible();
+    await this.locatorUtils.assertVisible(locators.khs.khsHeader(this.page));
   }
 
   async navigateToAddKhsDocument() {
     await this.locatorUtils.click(locators.khs.addKhsButton(this.page));
-    await expect(locators.khs.addKhsInformationHeader(this.page)).toBeVisible();
+    await this.locatorUtils.assertVisible(locators.khs.addKhsInformationHeader(this.page));
   }
 
   async uploadKhsDocument(filePath: string) {
-    const fileName = path.basename(filePath);
+    const fileName = path.basename(filePath); // file only allows PDF, expect ONLY PDF FILE
 
     await this.locatorUtils.uploadFile(
       locators.khs.uploadKhsInput(this.page),
       filePath,
     );
-    await expect(locators.khs.uploadedKhsFileName(this.page)).toHaveText(
-      new RegExp(fileName),
-    );
+    await this.locatorUtils.assertVisible(locators.khs.uploadedKhsFileName(this.page, fileName)) // assume only PDF file
     const submitKHSbtn = locators.khs.submitKhsButton(this.page);
     await submitKHSbtn.click({ timeout: 15000 })
   }
 
   async verifySuccessUploadKhs(owner: string) {
     await Promise.all([this.page.waitForURL(/\/student\/document\/result$/)]);
-    await expect(locators.khs.verifySuccessUploadKhs(this.page)).toBeVisible();
-    await expect(
+    await this.locatorUtils.assertVisible(locators.khs.verifySuccessUploadKhs(this.page));
+    await this.locatorUtils.assertVisible(
       locators.khs.verifyKhsDocumentOwner(this.page, owner),
-    ).toBeVisible();
+    );
   }
 
   async verifySortFilter(columnName: string) {
@@ -86,8 +84,6 @@ export class KhsPage extends BasePage {
       locators.khs.verifySearchFilterInput(this.page),
       search,
     );
-    await expect(
-      locators.khs.verifyFilteredData(this.page, search),
-    ).toBeVisible();
+    await this.locatorUtils.assertVisible(locators.khs.verifyFilteredData(this.page, search));
   }
 }

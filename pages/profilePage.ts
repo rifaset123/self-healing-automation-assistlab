@@ -9,33 +9,42 @@ import path from "path";
 
 export class ProfilePage extends BasePage {
   private locatorUtils: LocatorUtils;
+  private logger: Logger;
 
   constructor(page: Page, logger: Logger) {
     super(page);
     this.locatorUtils = new LocatorUtils(logger);
+    this.logger = logger;
   }
 
   async verifyURLAndHeaderProfile() {
     const urlPattern = new RegExp(`${devConfig.baseURL}student/profile`);
     await this.page.waitForURL(urlPattern);
-    await expect(locators.profile.profileHeader(this.page)).toBeVisible();
+    await this.locatorUtils.assertVisible(locators.profile.profileHeader(this.page));
   }
 
   async NavigateToEditProfile() {
     await this.locatorUtils.click(locators.profile.editProfilButton(this.page));
-    await expect(locators.profile.profileHeader(this.page)).toBeVisible();
+    await this.locatorUtils.assertVisible(locators.profile.profileHeader(this.page));
   }
 
   async uploadProfilePhoto(filePath: string) {
-    const fileName = path.basename(filePath);
-
     await this.locatorUtils.uploadFile(
       locators.profile.uploadPhotoInput(this.page),
       filePath,
     );
+  }
+
+  async verifySuccessUploadProfilePhoto(filePath: string) {
+    const fileName = path.basename(filePath);
+    // konfirmasi nama file
     await expect(locators.profile.uploadPhotoFileName(this.page)).toHaveValue(
       new RegExp(fileName),
     );
+
+    // verifikasi alert success
+    await this.locatorUtils.assertVisible(locators.profile.uploadPhotoConfirmation(this.page));
+    this.logger.log(`✅ Foto profil berhasil diunggah: ${fileName}`);
   }
 
   async fillProfileData(profileData: ProfileData) {
@@ -111,9 +120,7 @@ export class ProfilePage extends BasePage {
 
     await Promise.all([this.page.waitForURL(/\/student\/profile$/)]);
 
-    await expect(
-      locators.profile.verifySuccessUpdateProfile(this.page),
-    ).toBeVisible();
+    await this.locatorUtils.assertVisible(locators.profile.verifySuccessUpdateProfile(this.page));
 
     // verifikasi terredirect ke profil
     const urlPattern = new RegExp(`${devConfig.baseURL}student/profile`);
@@ -121,33 +128,33 @@ export class ProfilePage extends BasePage {
   }
 
   async verifyProfileData(profileData: ProfileData) {
-    await expect(
+    await this.locatorUtils.assertVisible(
       locators.profile.profilDataVerification.profileFieldValue(
         this.page,
         "Nama Lengkap",
         profileData.nama,
       ),
-    ).toBeVisible();
-    await expect(
+    );
+    await this.locatorUtils.assertVisible(
       locators.profile.profilDataVerification.profileFieldValue(
         this.page,
         "NIK",
         profileData.NIK,
       ),
-    ).toBeVisible();
-    await expect(
+    );
+    await this.locatorUtils.assertVisible(
       locators.profile.profilDataVerification.profileFieldValue(
         this.page,
         "Nama Bank",
         profileData.nama_rekening,
       ),
-    ).toBeVisible();
-    await expect(
+    );
+    await this.locatorUtils.assertVisible(
       locators.profile.profilDataVerification.profileFieldValue(
         this.page,
         "Nomor Bank",
         profileData.no_rekening,
       ),
-    ).toBeVisible();
+    );
   }
 }

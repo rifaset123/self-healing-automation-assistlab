@@ -49,7 +49,7 @@ export const assistantLocators = {
   errorMessageAlreadyApplied: (page: Page) => page.getByText(/You have already applied for this course/),
 
   // halaman riwayat pendaftaran asistensi
-  sidebarRegistrationHistoryButton: (page: Page) => page.getByTestId("sidebar-registration-history"),
+  sidebarRegistrationHistoryButton: (page: Page) => page.locator('span', { hasText: 'Riwayat Pendaftaran' }), 
   courseRegistrationDetailStatus: (page: Page) =>
     page
       .getByTestId("course-registration-status")
@@ -78,4 +78,10 @@ export const assistantLocators = {
       .assistanceOffering(page, courseClassCode)
       .locator("xpath=.//button[contains(text(), 'Tolak')]"), // DC dan LC
   navigateToOfferingPage: (page: Page) => page.getByTestId("sidebar-offering"),
+  verifyRejectOfferingStatus: (page: Page) =>
+    page
+      .getByTestId("registration-status")
+      .filter({ hasText: "Menolak" }),
+  // offeringHeader: (page: Page) => page.getByRole("heading", { name: "Penawaran Asistensi", level: 1 }), // DC
+  offeringHeader: (page: Page) => page.getByTestId("offering-header"), // DC
 };

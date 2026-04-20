@@ -19,7 +19,7 @@ export class AssistantOfferingPage extends BasePage {
     const urlPattern = new RegExp(`${devConfig.baseURL}student/offer`);
     await this.page.waitForURL(urlPattern);
     await expect(
-      locators.assistant.pageDetailHeading(this.page, "🚨 Penawaran Asistensi"),
+      locators.assistant.offeringHeader(this.page),
     ).toBeVisible();
   }
 

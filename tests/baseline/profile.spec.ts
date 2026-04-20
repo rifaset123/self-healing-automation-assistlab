@@ -54,6 +54,7 @@ test("Fitur 1 : Melengkapi profil dan mengisi KHS", async ({
 
   await test.step("[TC03] Mengunggah foto mahasiswa", async () => {
     await profilePage.uploadProfilePhoto(photoPath);
+    await profilePage.verifySuccessUploadProfilePhoto(photoPath);
     logger.log("✅ Pengguna berhasil mengunggah foto profil");
   });
 

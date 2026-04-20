@@ -1,0 +1,28 @@
+DC05 — Header KHS
+═══════════════════════════════
+
+INFORMASI
+- adalah Baseline
++ adalah Ground Truth
+
+File: locators/khsLocators.ts
+─────────────────────────────────
+-   khsHeader: (page: Page) => page.getByRole("heading", {
+-      name: "📤 KHS/Transkrip",
+-      level: 1,
+-    }),
+
++ khsHeader: (page: Page) => page.getByTestId("khs-header"),
+
+Perubahan pada SUT
+═══════════════════════════════
+
+INFORMASI SUT
+- adalah Baseline
++ adalah Kode dengan injeksi gangguan
+
+File: AssistLab-Frontend-main/resources/views/student/khs_transkrip/index.blade.php
+─────────────────────────────────
+- <h1 class="text-lg font-medium text-[#2AC5AC]">📤 KHS/Transkrip</h1>
+
++ <p class="text-lg font-medium text-[#2AC5AC]" data-testid="khs-header">📤 KHS/Transkrip</p>
