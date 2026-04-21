@@ -3,20 +3,17 @@ import { LoginPage } from "../../pages/loginPage";
 import { ProfilePage } from "../../pages/profilePage";
 import path from "path";
 import { ProfileDataField } from "../../utils/helper/enum";
-import { KhsPage } from "../../pages/khsPage";
 import { DashboardPage } from "../../pages/dashboardPage";
 
-test("Fitur 1 : Melengkapi profil dan mengisi KHS", async ({
+test("Fitur 1 : Melengkapi profil [TC01-TC04]", async ({
   page,
   logger,
 }) => {
   const profilePage = new ProfilePage(page, logger);
   const loginPage = new LoginPage(page, logger);
-  const khsPage = new KhsPage(page, logger);
   const dashboardPage = new DashboardPage(page, logger);
 
   const photoPath = path.join(__dirname, "../assets/male-profile.jpg");
-  const khsPath = path.join(__dirname, "../assets/khs-genap-2026.pdf");
 
   const profileData = {
     nama: ProfileDataField.NAME,
@@ -62,24 +59,5 @@ test("Fitur 1 : Melengkapi profil dan mengisi KHS", async ({
     await profilePage.fillProfileData(profileData);
     await profilePage.verifyProfileData(profileData);
     logger.log("✅ Pengguna berhasil melengkapi data profil");
-  });
-
-  await test.step("[TC05] Mengakses halaman KHS", async () => {
-    await khsPage.navigateToKhs();
-    await khsPage.verifyURLAndHeaderKhs();
-    logger.log("✅ Pengguna mengakses halaman KHS");
-  });
-
-  await test.step("[TC06] Menambahkan KHS", async () => {
-    await khsPage.navigateToAddKhsDocument();
-    await khsPage.uploadKhsDocument(khsPath);
-    await khsPage.verifySuccessUploadKhs(profileData.nama);
-    logger.log("✅ Pengguna berhasil mengunggah dokumen KHS");
-  });
-
-  await test.step("[TC07] Verifikasi fitur filter KHS", async () => {
-    await khsPage.verifySortFilter("Mata Kuliah");
-    await khsPage.verifySearchFilter("Pengujian");
-    logger.log("✅ Fitur filter KHS berhasil diverifikasi");
   });
 });
