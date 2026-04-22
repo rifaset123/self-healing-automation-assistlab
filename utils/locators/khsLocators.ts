@@ -1,7 +1,7 @@
 import { Page } from "@playwright/test";
 
 export const khsLocators = {
-  sidebarKhsButton: (page: Page) => page.getByTestId("sidebar-khs"),
+  sidebarKhsButton: (page: Page) => page.getByTestId("sidebarKhs"),
   khsHeader: (page: Page) => page.getByRole("heading", {
       name: "📤 KHS/Transkrip",
       level: 1,
@@ -12,7 +12,7 @@ export const khsLocators = {
       name: "📌 Informasi Fitur Upload KHS/Transkrip ",
       level: 2,
     }),
-  uploadKhsInput: (page: Page) => page.locator("input[type='file']#khsFile"),
+  uploadKhsInput: (page: Page) => page.locator("input[type='file'][name='khsFile']"),
   uploadedKhsFileName: (page: Page, filename: string) => page.locator("p[x-text='file.name']").filter({ hasText: filename }),
   submitKhsButton: (page: Page) => page.getByRole("button", { name: "Kirim" }),
   verifySuccessUploadKhs: (page: Page) => page.getByText(/Dokumen berhasil diproses!/),
@@ -22,7 +22,8 @@ export const khsLocators = {
   // filter
   verifySearchFilterInput: (page: Page) => page.locator('input[type="search"]'),
   verifyFilteredData: (page: Page, search: string) => page.locator("td p", { hasText: search }), // DC
-  verifySortFilter: (page: Page) => page.locator("#mata-kuliah-row"),
+  // verifySortFilter: (page: Page) => page.locator("#mata-kuliah-row"),
+  verifySortFilter: (page: Page, columnName: string) => page.locator("th").filter({ hasText: columnName }),
   // verifySortFilter: (page: Page, columnName: string) => page.locator("button.datatable-sorter", { hasText: columnName }), // lebih fleksibel
   sortButton: (page: Page, columnName: string) => page.getByRole("button", { name: columnName }),
   tableHeaders: (page: Page) => page.locator("thead th"),

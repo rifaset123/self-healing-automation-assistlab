@@ -1,0 +1,397 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e4]:
+      - link "AssistLab Logo" [ref=e7] [cursor=pointer]:
+        - /url: /
+        - img "AssistLab Logo" [ref=e8]
+      - button "Open user menu Rifa Indra Setiawan Mahasiswa Rifa Indra Setiawan" [ref=e11] [cursor=pointer]:
+        - generic [ref=e12]: Open user menu
+        - generic [ref=e13]:
+          - heading "Rifa Indra Setiawan" [level=6] [ref=e14]
+          - paragraph [ref=e15]: Mahasiswa
+        - img "Rifa Indra Setiawan" [ref=e16]
+  - complementary [ref=e17]:
+    - generic [ref=e18]:
+      - generic [ref=e19]:
+        - list [ref=e21]:
+          - listitem [ref=e22]:
+            - link [ref=e23] [cursor=pointer]:
+              - /url: http://localhost:3000/student
+              - img [ref=e25]
+              - generic [ref=e27]: Dashboard
+          - listitem [ref=e28]:
+            - link [ref=e29] [cursor=pointer]:
+              - /url: http://localhost:3000/student/document
+              - img [ref=e31]
+              - generic [ref=e33]: KHS/Transkrip
+          - listitem [ref=e34]:
+            - link [ref=e35] [cursor=pointer]:
+              - /url: http://localhost:3000/student/myAssistance
+              - img [ref=e37]
+              - generic [ref=e39]: Asistensi Saya
+          - listitem [ref=e40]:
+            - link [ref=e41] [cursor=pointer]:
+              - /url: http://localhost:3000/student/history
+              - img [ref=e43]
+              - generic [ref=e45]: Riwayat Pendaftaran
+          - listitem [ref=e46]:
+            - link [ref=e47] [cursor=pointer]:
+              - /url: http://localhost:3000/student/offer
+              - img [ref=e49]
+              - generic [ref=e51]: Penawaran Asistensi
+        - generic [ref=e53]:
+          - generic [ref=e54]:
+            - img [ref=e55]
+            - generic [ref=e56]:
+              - paragraph [ref=e57]: Perlu Bantuan?
+              - paragraph [ref=e58]: Cek disini
+          - link [ref=e60] [cursor=pointer]:
+            - /url: http://localhost:3000/student/faq
+            - text: Lihat FAQ
+      - paragraph [ref=e62]:
+        - text: Made with ☕ by
+        - link [ref=e63] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/mumtaza15/
+          - text: Mumtaza15
+        - text: "&"
+        - link [ref=e64] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/farhan-akmal-s/
+          - text: farhanakmals
+  - main [ref=e65]:
+    - generic [ref=e68]:
+      - generic [ref=e69]:
+        - heading "📄 Hasil Upload KHS/Transkrip" [level=1] [ref=e70]
+        - generic [ref=e71]:
+          - link "KHS/Transkrip" [ref=e72] [cursor=pointer]:
+            - /url: http://localhost:3000/student/document
+          - img [ref=e73]
+          - heading "Hasil Upload" [level=5] [ref=e75]
+      - generic [ref=e76]:
+        - paragraph [ref=e77]: Rifa Indra Setiawan
+        - paragraph [ref=e78]: •
+        - paragraph [ref=e79]: TRANSKRIP SEMENTARA Semester Genap 2025/2026
+        - paragraph [ref=e80]: •
+        - paragraph [ref=e81]: IPK = 3.85
+      - generic [ref=e83]:
+        - generic [ref=e84]:
+          - generic [ref=e86]:
+            - combobox "entries per page" [ref=e87]:
+              - option "20" [selected]
+              - option "40"
+              - option "60"
+              - option "80"
+              - option "100"
+              - option "120"
+              - option "140"
+            - text: entries per page
+          - searchbox "Search within table" [ref=e89]
+        - table [ref=e91]:
+          - rowgroup [ref=e92]:
+            - row "No Kode Mata Kuliah SKS Ke Nilai" [ref=e93]:
+              - columnheader "No" [ref=e94]:
+                - button "No" [ref=e95]:
+                  - generic [ref=e96] [cursor=pointer]:
+                    - text: "No"
+                    - img [ref=e97]
+              - columnheader "Kode" [ref=e99]:
+                - button "Kode" [ref=e100]:
+                  - generic [ref=e101] [cursor=pointer]:
+                    - text: Kode
+                    - img [ref=e102]
+              - columnheader "Mata Kuliah" [ref=e104]:
+                - button "Mata Kuliah" [ref=e105]:
+                  - generic [ref=e106] [cursor=pointer]:
+                    - text: Mata Kuliah
+                    - img [ref=e107]
+              - columnheader "SKS" [ref=e109]:
+                - button "SKS" [ref=e110]:
+                  - generic [ref=e111] [cursor=pointer]:
+                    - text: SKS
+                    - img [ref=e112]
+              - columnheader "Ke" [ref=e114]:
+                - button "Ke" [ref=e115]:
+                  - generic [ref=e116] [cursor=pointer]:
+                    - text: Ke
+                    - img [ref=e117]
+              - columnheader "Nilai" [ref=e119]:
+                - button "Nilai" [ref=e120]:
+                  - generic [ref=e121] [cursor=pointer]:
+                    - text: Nilai
+                    - img [ref=e122]
+          - rowgroup [ref=e124]:
+            - row "1 SVPL214107 Algoritma dan Pemrograman 2 1 A-" [ref=e125]:
+              - cell "1" [ref=e126]:
+                - paragraph [ref=e127]: "1"
+              - cell "SVPL214107" [ref=e128]:
+                - paragraph [ref=e129]: SVPL214107
+              - cell "Algoritma dan Pemrograman" [ref=e130]:
+                - paragraph [ref=e131]: Algoritma dan Pemrograman
+              - cell "2" [ref=e132]:
+                - paragraph [ref=e133]: "2"
+              - cell "1" [ref=e134]:
+                - paragraph [ref=e135]: "1"
+              - cell "A-" [ref=e136]:
+                - paragraph [ref=e137]: A-
+            - row "2 SVPL214104 Bahasa Inggris 1 2 1 A" [ref=e138]:
+              - cell "2" [ref=e139]:
+                - paragraph [ref=e140]: "2"
+              - cell "SVPL214104" [ref=e141]:
+                - paragraph [ref=e142]: SVPL214104
+              - cell "Bahasa Inggris 1" [ref=e143]:
+                - paragraph [ref=e144]: Bahasa Inggris 1
+              - cell "2" [ref=e145]:
+                - paragraph [ref=e146]: "2"
+              - cell "1" [ref=e147]:
+                - paragraph [ref=e148]: "1"
+              - cell "A" [ref=e149]:
+                - paragraph [ref=e150]: A
+            - row "3 SVPL214108 Keselamatan dan Kesehatan Kerja 2 1 A-" [ref=e151]:
+              - cell "3" [ref=e152]:
+                - paragraph [ref=e153]: "3"
+              - cell "SVPL214108" [ref=e154]:
+                - paragraph [ref=e155]: SVPL214108
+              - cell "Keselamatan dan Kesehatan Kerja" [ref=e156]:
+                - paragraph [ref=e157]: Keselamatan dan Kesehatan Kerja
+              - cell "2" [ref=e158]:
+                - paragraph [ref=e159]: "2"
+              - cell "1" [ref=e160]:
+                - paragraph [ref=e161]: "1"
+              - cell "A-" [ref=e162]:
+                - paragraph [ref=e163]: A-
+            - row "4 SVPL214103 Matematika Diskrit 2 1 A/B" [ref=e164]:
+              - cell "4" [ref=e165]:
+                - paragraph [ref=e166]: "4"
+              - cell "SVPL214103" [ref=e167]:
+                - paragraph [ref=e168]: SVPL214103
+              - cell "Matematika Diskrit" [ref=e169]:
+                - paragraph [ref=e170]: Matematika Diskrit
+              - cell "2" [ref=e171]:
+                - paragraph [ref=e172]: "2"
+              - cell "1" [ref=e173]:
+                - paragraph [ref=e174]: "1"
+              - cell "A/B" [ref=e175]:
+                - paragraph [ref=e176]: A/B
+            - row "5 SVPL214102 Matematika Teknik 2 1 B" [ref=e177]:
+              - cell "5" [ref=e178]:
+                - paragraph [ref=e179]: "5"
+              - cell "SVPL214102" [ref=e180]:
+                - paragraph [ref=e181]: SVPL214102
+              - cell "Matematika Teknik" [ref=e182]:
+                - paragraph [ref=e183]: Matematika Teknik
+              - cell "2" [ref=e184]:
+                - paragraph [ref=e185]: "2"
+              - cell "1" [ref=e186]:
+                - paragraph [ref=e187]: "1"
+              - cell "B" [ref=e188]:
+                - paragraph [ref=e189]: B
+            - row "6 SVPL214101 Pengantar Teknologi Informasi 2 1 A/B" [ref=e190]:
+              - cell "6" [ref=e191]:
+                - paragraph [ref=e192]: "6"
+              - cell "SVPL214101" [ref=e193]:
+                - paragraph [ref=e194]: SVPL214101
+              - cell "Pengantar Teknologi Informasi" [ref=e195]:
+                - paragraph [ref=e196]: Pengantar Teknologi Informasi
+              - cell "2" [ref=e197]:
+                - paragraph [ref=e198]: "2"
+              - cell "1" [ref=e199]:
+                - paragraph [ref=e200]: "1"
+              - cell "A/B" [ref=e201]:
+                - paragraph [ref=e202]: A/B
+            - row "7 SVPL214109 Praktikum Desain Elementer 2 1 A-" [ref=e203]:
+              - cell "7" [ref=e204]:
+                - paragraph [ref=e205]: "7"
+              - cell "SVPL214109" [ref=e206]:
+                - paragraph [ref=e207]: SVPL214109
+              - cell "Praktikum Desain Elementer" [ref=e208]:
+                - paragraph [ref=e209]: Praktikum Desain Elementer
+              - cell "2" [ref=e210]:
+                - paragraph [ref=e211]: "2"
+              - cell "1" [ref=e212]:
+                - paragraph [ref=e213]: "1"
+              - cell "A-" [ref=e214]:
+                - paragraph [ref=e215]: A-
+            - row "8 SVPL214106 Praktikum Pemrograman Komputer 2 1 B+" [ref=e216]:
+              - cell "8" [ref=e217]:
+                - paragraph [ref=e218]: "8"
+              - cell "SVPL214106" [ref=e219]:
+                - paragraph [ref=e220]: SVPL214106
+              - cell "Praktikum Pemrograman Komputer" [ref=e221]:
+                - paragraph [ref=e222]: Praktikum Pemrograman Komputer
+              - cell "2" [ref=e223]:
+                - paragraph [ref=e224]: "2"
+              - cell "1" [ref=e225]:
+                - paragraph [ref=e226]: "1"
+              - cell "B+" [ref=e227]:
+                - paragraph [ref=e228]: B+
+            - row "9 SVPL214105 Praktikum Teknologi Informasi dan Instalasi Komputer 2 1 A" [ref=e229]:
+              - cell "9" [ref=e230]:
+                - paragraph [ref=e231]: "9"
+              - cell "SVPL214105" [ref=e232]:
+                - paragraph [ref=e233]: SVPL214105
+              - cell "Praktikum Teknologi Informasi dan Instalasi Komputer" [ref=e234]:
+                - paragraph [ref=e235]: Praktikum Teknologi Informasi dan Instalasi Komputer
+              - cell "2" [ref=e236]:
+                - paragraph [ref=e237]: "2"
+              - cell "1" [ref=e238]:
+                - paragraph [ref=e239]: "1"
+              - cell "A" [ref=e240]:
+                - paragraph [ref=e241]: A
+            - row "10 SVPL214201 Bahasa Inggris 2 2 1 A" [ref=e242]:
+              - cell "10" [ref=e243]:
+                - paragraph [ref=e244]: "10"
+              - cell "SVPL214201" [ref=e245]:
+                - paragraph [ref=e246]: SVPL214201
+              - cell "Bahasa Inggris 2" [ref=e247]:
+                - paragraph [ref=e248]: Bahasa Inggris 2
+              - cell "2" [ref=e249]:
+                - paragraph [ref=e250]: "2"
+              - cell "1" [ref=e251]:
+                - paragraph [ref=e252]: "1"
+              - cell "A" [ref=e253]:
+                - paragraph [ref=e254]: A
+            - row "11 SVPL214205 Praktikum Struktur Data 2 1 B+" [ref=e255]:
+              - cell "11" [ref=e256]:
+                - paragraph [ref=e257]: "11"
+              - cell "SVPL214205" [ref=e258]:
+                - paragraph [ref=e259]: SVPL214205
+              - cell "Praktikum Struktur Data" [ref=e260]:
+                - paragraph [ref=e261]: Praktikum Struktur Data
+              - cell "2" [ref=e262]:
+                - paragraph [ref=e263]: "2"
+              - cell "1" [ref=e264]:
+                - paragraph [ref=e265]: "1"
+              - cell "B+" [ref=e266]:
+                - paragraph [ref=e267]: B+
+            - row "12 SVPL214207 Praktikum Basis Data 2 1 A" [ref=e268]:
+              - cell "12" [ref=e269]:
+                - paragraph [ref=e270]: "12"
+              - cell "SVPL214207" [ref=e271]:
+                - paragraph [ref=e272]: SVPL214207
+              - cell "Praktikum Basis Data" [ref=e273]:
+                - paragraph [ref=e274]: Praktikum Basis Data
+              - cell "2" [ref=e275]:
+                - paragraph [ref=e276]: "2"
+              - cell "1" [ref=e277]:
+                - paragraph [ref=e278]: "1"
+              - cell "A" [ref=e279]:
+                - paragraph [ref=e280]: A
+            - row "13 SVPL214203 Aljabar Vektor dan Matrik 2 1 A/B" [ref=e281]:
+              - cell "13" [ref=e282]:
+                - paragraph [ref=e283]: "13"
+              - cell "SVPL214203" [ref=e284]:
+                - paragraph [ref=e285]: SVPL214203
+              - cell "Aljabar Vektor dan Matrik" [ref=e286]:
+                - paragraph [ref=e287]: Aljabar Vektor dan Matrik
+              - cell "2" [ref=e288]:
+                - paragraph [ref=e289]: "2"
+              - cell "1" [ref=e290]:
+                - paragraph [ref=e291]: "1"
+              - cell "A/B" [ref=e292]:
+                - paragraph [ref=e293]: A/B
+            - row "14 SVPL214204 Analisis Algoritma dan Struktur Data 2 1 A" [ref=e294]:
+              - cell "14" [ref=e295]:
+                - paragraph [ref=e296]: "14"
+              - cell "SVPL214204" [ref=e297]:
+                - paragraph [ref=e298]: SVPL214204
+              - cell "Analisis Algoritma dan Struktur Data" [ref=e299]:
+                - paragraph [ref=e300]: Analisis Algoritma dan Struktur Data
+              - cell "2" [ref=e301]:
+                - paragraph [ref=e302]: "2"
+              - cell "1" [ref=e303]:
+                - paragraph [ref=e304]: "1"
+              - cell "A" [ref=e305]:
+                - paragraph [ref=e306]: A
+            - row "15 SVPL214206 Basis Data 2 1 A" [ref=e307]:
+              - cell "15" [ref=e308]:
+                - paragraph [ref=e309]: "15"
+              - cell "SVPL214206" [ref=e310]:
+                - paragraph [ref=e311]: SVPL214206
+              - cell "Basis Data" [ref=e312]:
+                - paragraph [ref=e313]: Basis Data
+              - cell "2" [ref=e314]:
+                - paragraph [ref=e315]: "2"
+              - cell "1" [ref=e316]:
+                - paragraph [ref=e317]: "1"
+              - cell "A" [ref=e318]:
+                - paragraph [ref=e319]: A
+            - row "16 SVPL214208 Praktikum Pemrograman Web 1 2 1 A/B" [ref=e320]:
+              - cell "16" [ref=e321]:
+                - paragraph [ref=e322]: "16"
+              - cell "SVPL214208" [ref=e323]:
+                - paragraph [ref=e324]: SVPL214208
+              - cell "Praktikum Pemrograman Web 1" [ref=e325]:
+                - paragraph [ref=e326]: Praktikum Pemrograman Web 1
+              - cell "2" [ref=e327]:
+                - paragraph [ref=e328]: "2"
+              - cell "1" [ref=e329]:
+                - paragraph [ref=e330]: "1"
+              - cell "A/B" [ref=e331]:
+                - paragraph [ref=e332]: A/B
+            - row "17 SVPL214209 Pemrograman Berorientasi Objek 2 1 A" [ref=e333]:
+              - cell "17" [ref=e334]:
+                - paragraph [ref=e335]: "17"
+              - cell "SVPL214209" [ref=e336]:
+                - paragraph [ref=e337]: SVPL214209
+              - cell "Pemrograman Berorientasi Objek" [ref=e338]:
+                - paragraph [ref=e339]: Pemrograman Berorientasi Objek
+              - cell "2" [ref=e340]:
+                - paragraph [ref=e341]: "2"
+              - cell "1" [ref=e342]:
+                - paragraph [ref=e343]: "1"
+              - cell "A" [ref=e344]:
+                - paragraph [ref=e345]: A
+            - row "18 SVPL214210 Praktikum Pemrograman Berorientasi Objek 2 1 A/B" [ref=e346]:
+              - cell "18" [ref=e347]:
+                - paragraph [ref=e348]: "18"
+              - cell "SVPL214210" [ref=e349]:
+                - paragraph [ref=e350]: SVPL214210
+              - cell "Praktikum Pemrograman Berorientasi Objek" [ref=e351]:
+                - paragraph [ref=e352]: Praktikum Pemrograman Berorientasi Objek
+              - cell "2" [ref=e353]:
+                - paragraph [ref=e354]: "2"
+              - cell "1" [ref=e355]:
+                - paragraph [ref=e356]: "1"
+              - cell "A/B" [ref=e357]:
+                - paragraph [ref=e358]: A/B
+            - row "19 SVPL214603 Statistika 2 1 A/B" [ref=e359]:
+              - cell "19" [ref=e360]:
+                - paragraph [ref=e361]: "19"
+              - cell "SVPL214603" [ref=e362]:
+                - paragraph [ref=e363]: SVPL214603
+              - cell "Statistika" [ref=e364]:
+                - paragraph [ref=e365]: Statistika
+              - cell "2" [ref=e366]:
+                - paragraph [ref=e367]: "2"
+              - cell "1" [ref=e368]:
+                - paragraph [ref=e369]: "1"
+              - cell "A/B" [ref=e370]:
+                - paragraph [ref=e371]: A/B
+            - row "20 SVPL214302 Rekayasa Kebutuhan Perangkat Lunak 2 1 A-" [ref=e372]:
+              - cell "20" [ref=e373]:
+                - paragraph [ref=e374]: "20"
+              - cell "SVPL214302" [ref=e375]:
+                - paragraph [ref=e376]: SVPL214302
+              - cell "Rekayasa Kebutuhan Perangkat Lunak" [ref=e377]:
+                - paragraph [ref=e378]: Rekayasa Kebutuhan Perangkat Lunak
+              - cell "2" [ref=e379]:
+                - paragraph [ref=e380]: "2"
+              - cell "1" [ref=e381]:
+                - paragraph [ref=e382]: "1"
+              - cell "A-" [ref=e383]:
+                - paragraph [ref=e384]: A-
+        - generic [ref=e385]:
+          - generic [ref=e386]: Showing 1 to 20 of 66 entries
+          - navigation [ref=e387]:
+            - list [ref=e388]:
+              - listitem [ref=e389]:
+                - button "Page 1" [ref=e390]: ‹
+              - listitem [ref=e391]:
+                - button "Page 1" [ref=e392]: "1"
+              - listitem [ref=e393]:
+                - button "Page 2" [ref=e394]: "2"
+              - listitem [ref=e395]:
+                - button "Page 3" [ref=e396]: "3"
+              - listitem [ref=e397]:
+                - button "Page 4" [ref=e398]: "4"
+              - listitem [ref=e399]:
+                - button "Page 2" [ref=e400]: ›

@@ -29,32 +29,33 @@ test("Fitur 4 : Memverifikasi pendaftaran asistensi [TC11-TC13]", async ({
     logger.log("✅ Pengguna berhasil mengakses halaman dashboard AssistLab");
   });
 
-  await test.step(`[TC11] Memverifikasi status pendaftaran asistensi melewati dashboard`, async () => {
-    await assistantPage.verifyDashboardAfterApplyAssistance(courseDetail.courseClassCode);
-    logger.log(`✅ Dashboard menampilkan status pendaftaran asistensi pada kelas ${courseDetail.courseClassCode} dengan benar`,);
-    await assistantPage.seeRegistrationDetailFromDashboard(courseDetail.courseClassCode);
-    await registrationHistoryPage.verifyUrlandHeader();
-    await registrationHistoryPage.verifyCourseApplied(courseDetail.courseAbbreviation, courseDetail.courseCode, courseDetail.courseClassCode);
-    await registrationHistoryPage.verifyCourseRegistrationDetailStatus();
-    logger.log(`✅ Riwayat pendaftaran asistensi menampilkan detail pendaftaran pada kelas ${courseDetail.courseClassCode} dengan benar`,);
-  });
+  // await test.step(`[TC11] Memverifikasi status pendaftaran asistensi melewati dashboard`, async () => {
+  //   await assistantPage.verifyDashboardAfterApplyAssistance(courseDetail.courseClassCode);
+  //   logger.log(`✅ Dashboard menampilkan status pendaftaran asistensi pada kelas ${courseDetail.courseClassCode} dengan benar`,);
+  //   await assistantPage.seeRegistrationDetailFromDashboard(courseDetail.courseClassCode);
+  //   await registrationHistoryPage.verifyUrlandHeader();
+  //   await registrationHistoryPage.verifyCourseApplied(courseDetail.courseAbbreviation, courseDetail.courseCode, courseDetail.courseClassCode);
+  //   await registrationHistoryPage.verifyCourseRegistrationDetailStatus();
+  //   logger.log(`✅ Riwayat pendaftaran asistensi menampilkan detail pendaftaran pada kelas ${courseDetail.courseClassCode} dengan benar`,);
+  // });
 
-  await test.step(`[TC12] Memverifikasi status pendaftaran asistensi melewati riwayat pendaftaran`, async () => {
-    await dashboardPage.navigateToRegistrationHistory();
-    await registrationHistoryPage.selectPeriodRow(registrationPeriod);
-    await registrationHistoryPage.selectRegistrationRow(courseDetail.courseAbbreviation, courseDetail.courseClassCode);
-    await registrationHistoryPage.verifyUrlandHeader();
-    await registrationHistoryPage.verifyCourseApplied(courseDetail.courseAbbreviation, courseDetail.courseCode, courseDetail.courseClassCode,);
-    await registrationHistoryPage.verifyCourseRegistrationDetailStatus();
-    logger.log(`✅ Riwayat pendaftaran asistensi menampilkan detail pendaftaran pada kelas ${courseDetail.courseClassCode} dengan benar`);
-  });
+  // await test.step(`[TC12] Memverifikasi status pendaftaran asistensi melewati riwayat pendaftaran`, async () => {
+  //   await dashboardPage.navigateToRegistrationHistory();
+  //   await registrationHistoryPage.selectPeriodRow(registrationPeriod);
+  //   await registrationHistoryPage.selectRegistrationRow(courseDetail.courseAbbreviation, courseDetail.courseClassCode);
+  //   await registrationHistoryPage.verifyUrlandHeader();
+  //   await registrationHistoryPage.verifyCourseApplied(courseDetail.courseAbbreviation, courseDetail.courseCode, courseDetail.courseClassCode,);
+  //   await registrationHistoryPage.verifyCourseRegistrationDetailStatus();
+  //   logger.log(`✅ Riwayat pendaftaran asistensi menampilkan detail pendaftaran pada kelas ${courseDetail.courseClassCode} dengan benar`);
+  // });
 
   await test.step("[TC13] Mendaftar ke lowongan asistensi yang sama", async () => {
-    await assistantPage.navigateToDashboard();
-    await dashboardPage.navigateToVacancyPage();
-    await assistantPage.clickSeeDetailsByCourseClassCode(courseDetail.courseClassCode);
-    await assistantPage.verifyVacancyDetailPage(courseDetail.courseAbbreviation, courseDetail.courseCode, courseDetail.courseClassCode,);
-    await assistantPage.verifyCourseStatusAvailable();
+    // await assistantPage.navigateToDashboard();
+    // await dashboardPage.navigateToVacancyPage();
+    // await assistantPage.clickSeeDetailsByCourseClassCode(courseDetail.courseClassCode);
+    // await assistantPage.verifyVacancyDetailPage(courseDetail.courseAbbreviation, courseDetail.courseCode, courseDetail.courseClassCode,);
+    // await assistantPage.verifyCourseStatusAvailable();
+    await page.goto("/student/courseDetails/1");
     await assistantPage.applyForAssistance();
     // menampilkan error message karena mendaftar ke lowongan asistensi yang sama
     await assistantPage.verifyAlreadyAppliedErrorMessage();

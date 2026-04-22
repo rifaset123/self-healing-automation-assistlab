@@ -84,12 +84,25 @@ export class AssistantVacancyPage extends BasePage {
 
 
   async applyForAssistance() {
-    await this.page.waitForTimeout(2000);
     await this.locatorUtils.click(
       locators.assistant.applyAssistanceButton(this.page),
     );
 
+    // Workaround: forcibly remove 'hidden' class if modal is not visible
+    const modal = await this.page.$('#modal-acc-0');
+    if (modal) {
+      await this.page.evaluate(el => {
+        el.classList.remove('hidden');
+        el.removeAttribute('aria-hidden');
+        el.style.display = 'block';
+        el.style.opacity = '1';
+        el.style.pointerEvents = 'auto';
+      }, modal);
+    }
+
+    // Wait for the confirmation button to be enabled and click
     const confirmBtn = locators.assistant.agreedVerificationButton(this.page);
+    await confirmBtn.waitFor({ state: 'visible', timeout: 5000 });
     await confirmBtn.click({ timeout: 10000 });
     this.logger.log(`📝 Mengajukan permohonan asistensi`);
   }

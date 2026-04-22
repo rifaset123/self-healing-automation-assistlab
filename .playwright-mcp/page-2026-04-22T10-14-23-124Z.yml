@@ -1,0 +1,17 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - img "AssistLab" [ref=e4]
+    - generic [ref=e5]:
+      - generic [ref=e7]:
+        - img "AssistLab" [ref=e8]
+        - heading "More practical and less manual" [level=4] [ref=e9]
+      - img "AssistLab" [ref=e11]
+  - generic [ref=e13]:
+    - heading "Halo Civitas Akademika 👋" [level=1] [ref=e14]
+    - img [ref=e15]
+    - paragraph [ref=e16]: Selamat datang kembali, login untuk melanjutkan aktivitas yang akan Anda lakukan. Akses fitur-fitur sesuai dengan peran yang telah diberikan kepada Anda dan selamat beraktivitas.
+    - link "Login dengan Email UGM" [ref=e17] [cursor=pointer]:
+      - /url: http://localhost:3000/auth
+      - generic [ref=e18]:
+        - img [ref=e19]
+        - paragraph [ref=e20]: Login dengan Email UGM

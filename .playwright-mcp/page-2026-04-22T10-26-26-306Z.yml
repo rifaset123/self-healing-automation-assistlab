@@ -1,0 +1,106 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e4]:
+      - link "AssistLab Logo" [ref=e7] [cursor=pointer]:
+        - /url: /
+        - img "AssistLab Logo" [ref=e8]
+      - button "Open user menu Rifa Indra Setiawan Mahasiswa Rifa Indra Setiawan" [ref=e11] [cursor=pointer]:
+        - generic [ref=e12]: Open user menu
+        - generic [ref=e13]:
+          - heading "Rifa Indra Setiawan" [level=6] [ref=e14]
+          - paragraph [ref=e15]: Mahasiswa
+        - img "Rifa Indra Setiawan" [ref=e16]
+  - complementary [ref=e17]:
+    - generic [ref=e18]:
+      - generic [ref=e19]:
+        - list [ref=e21]:
+          - listitem [ref=e22]:
+            - link [ref=e23] [cursor=pointer]:
+              - /url: http://localhost:3000/student
+              - img [ref=e25]
+              - generic [ref=e27]: Dashboard
+          - listitem [ref=e28]:
+            - link [ref=e29] [cursor=pointer]:
+              - /url: http://localhost:3000/student/document
+              - img [ref=e31]
+              - generic [ref=e33]: KHS/Transkrip
+          - listitem [ref=e34]:
+            - link [ref=e35] [cursor=pointer]:
+              - /url: http://localhost:3000/student/myAssistance
+              - img [ref=e37]
+              - generic [ref=e39]: Asistensi Saya
+          - listitem [ref=e40]:
+            - link [ref=e41] [cursor=pointer]:
+              - /url: http://localhost:3000/student/history
+              - img [ref=e43]
+              - generic [ref=e45]: Riwayat Pendaftaran
+          - listitem [ref=e46]:
+            - link [ref=e47] [cursor=pointer]:
+              - /url: http://localhost:3000/student/offer
+              - img [ref=e49]
+              - generic [ref=e51]: Penawaran Asistensi
+        - generic [ref=e53]:
+          - generic [ref=e54]:
+            - img [ref=e55]
+            - generic [ref=e56]:
+              - paragraph [ref=e57]: Perlu Bantuan?
+              - paragraph [ref=e58]: Cek disini
+          - link [ref=e60] [cursor=pointer]:
+            - /url: http://localhost:3000/student/faq
+            - text: Lihat FAQ
+      - paragraph [ref=e62]:
+        - text: Made with ☕ by
+        - link [ref=e63] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/mumtaza15/
+          - text: Mumtaza15
+        - text: "&"
+        - link [ref=e64] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/farhan-akmal-s/
+          - text: farhanakmals
+  - main [ref=e65]:
+    - generic [ref=e68]:
+      - generic [ref=e69]:
+        - heading "📤 KHS/Transkrip" [level=1] [ref=e71]
+        - link "Tambah KHS/Transkrip" [ref=e72] [cursor=pointer]:
+          - /url: http://localhost:3000/student/addDocument
+          - img [ref=e73]
+          - text: Tambah KHS/Transkrip
+      - generic [ref=e76]:
+        - table [ref=e78]:
+          - rowgroup [ref=e79]:
+            - row "No Tanggal Nama Berkas Detail" [ref=e80]:
+              - columnheader "No" [ref=e81]:
+                - button "No" [ref=e82]:
+                  - generic [ref=e83] [cursor=pointer]:
+                    - text: "No"
+                    - img [ref=e84]
+              - columnheader "Tanggal" [ref=e86]:
+                - button "Tanggal" [ref=e87]:
+                  - generic [ref=e88] [cursor=pointer]:
+                    - text: Tanggal
+                    - img [ref=e89]
+              - columnheader "Nama Berkas" [ref=e91]:
+                - button "Nama Berkas" [ref=e92]:
+                  - generic [ref=e93] [cursor=pointer]:
+                    - text: Nama Berkas
+                    - img [ref=e94]
+              - columnheader "Detail" [ref=e96]:
+                - button "Detail" [ref=e97]:
+                  - generic [ref=e98]: Detail
+          - rowgroup [ref=e99]:
+            - row "1 22/04/2026 17:25 TRANSKRIP SEMENTARA Semester Genap 2025/2026" [ref=e100]:
+              - cell "1" [ref=e101]:
+                - paragraph [ref=e102]: "1"
+              - cell "22/04/2026 17:25" [ref=e103]:
+                - paragraph [ref=e104]: 22/04/2026 17:25
+              - cell "TRANSKRIP SEMENTARA Semester Genap 2025/2026" [ref=e105]:
+                - paragraph [ref=e106]: TRANSKRIP SEMENTARA Semester Genap 2025/2026
+              - cell [ref=e107]:
+                - button [ref=e108] [cursor=pointer]:
+                  - link [ref=e109]:
+                    - /url: http://localhost:3000/student/detailDocument/72
+                    - img [ref=e110]
+        - generic [ref=e113]:
+          - generic [ref=e114]: Showing 1 to 1 of 1 entries
+          - navigation:
+            - list

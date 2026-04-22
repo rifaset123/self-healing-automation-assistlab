@@ -52,22 +52,17 @@ export class KhsPage extends BasePage {
   }
 
   async verifySortFilter(columnName: string) {
-    await this.locatorUtils.click(
-      locators.khs.verifySortFilter(this.page),
-    );
-
-    // Verifikasi data terurut
-    const headers = await locators.khs
-      .tableHeaders(this.page)
-      .allTextContents();
-
-    const columnIndex = headers.findIndex((h) => h.trim().includes(columnName));
-
+    // Find the column header with the given name and click it
+    const headers = await locators.khs.tableHeaders(this.page);
+    const headerTexts = await headers.allTextContents();
+    const columnIndex = headerTexts.findIndex((h) => h.trim().includes(columnName));
     if (columnIndex === -1) {
       throw new Error(`Column ${columnName} not found`);
     }
+    const headerLocator = headers.nth(columnIndex);
+    await this.locatorUtils.click(headerLocator);
 
-    // memverifikasi spesifik kolom yang diurutkan
+    // Verifikasi data terurut
     const columnValues = await locators.khs
       .tableColumnCells(this.page, columnIndex)
       .allTextContents();
