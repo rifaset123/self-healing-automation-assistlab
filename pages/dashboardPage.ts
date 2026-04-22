@@ -64,7 +64,7 @@ export class DashboardPage extends BasePage {
     );
 
 
-    const confirmBtn = locators.assistant.agreedVerificationButton(this.page);
+    const confirmBtn = locators.assistant.agreedVerificationOfferButton(this.page);
     await confirmBtn.click({ timeout: 10000 });
   }
 

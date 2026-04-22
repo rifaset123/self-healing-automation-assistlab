@@ -27,19 +27,20 @@ export const assistantLocators = {
       .filter({ hasText: detail }), // DC
   courseStatus: (page: Page) => page.getByTestId("course-status").filter({ hasText: /Tersedia/ }),
   applyAssistanceButton: (page: Page) => page.locator("#submitBtn"),
-  agreedVerificationButton: (page: Page) => page.getByRole("button", { name: "Ya, Saya Yakin" }), // LC
-  verifySuccessApplyAssistance: (page: Page) => page.getByText(/Berhasil melakukan pendaftaran asistensi/), // DC
+  agreedVerificationButton: (page: Page) => page.getByRole("button", { name: "Ya, Saya Yakin" }), 
+  agreedVerificationOfferButton: (page: Page) => page.getByRole("button", { name: "Ya, Saya Yakin" }), 
+  verifySuccessApplyAssistance: (page: Page) => page.getByText(/Berhasil melakukan pendaftaran asistensi/), 
 
   // halaman dashboard setelah mendaftar asistensi
   sidebarDashboardButton: (page: Page) => page.getByTestId("sidebar-dashboard"),
-  assistantRegistrationStatusCard: (page: Page) => page.getByTestId("card-registration-status"), // LC
+  assistantRegistrationStatusCard: (page: Page) => page.getByTestId("card-registration-status"),
   registrationStatusFromDashboard: (page: Page, courseClassCode: string) =>
     assistantLocators
       .assistantRegistrationStatusCard(page)
       .filter({ has: page.getByText(courseClassCode) }),
   registrationStatus: (page: Page) =>
     assistantLocators
-      .assistantRegistrationStatusCard(page) // DC, menambah ambiguitas ketika mendaftar 2 lowongan
+      .assistantRegistrationStatusCard(page) 
       // Diproses|Diterima|Ditolak|Menerima|Menolak|Ditawarkan
       .filter({ hasText: /Diproses/ }),
   seeRegistrationDetailButton: (page: Page, courseClassCode: string) =>
