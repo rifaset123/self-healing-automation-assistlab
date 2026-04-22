@@ -1,7 +1,7 @@
 import { Page } from "@playwright/test";
 
 export const khsLocators = {
-  sidebarKhsButton: (page: Page) => page.getByTestId("sidebar-khs"),
+  sidebarKhsButton: (page: Page) => page.getByTestId("sidebarKhs"),
   khsHeader: (page: Page) => page.getByRole("heading", {
       name: "📤 KHS/Transkrip",
       level: 1,
@@ -12,8 +12,19 @@ export const khsLocators = {
       name: "📌 Informasi Fitur Upload KHS/Transkrip ",
       level: 2,
     }),
-  uploadKhsInput: (page: Page) => page.locator("input[type='file']#khsFile"),
-  uploadedKhsFileName: (page: Page, filename: string) => page.locator("p[x-text='file.name']").filter({ hasText: filename }),
+  uploadKhsInput: (page: Page) =>
+    page
+      .locator("*")
+      .filter({
+        has: page.getByRole("heading", {
+          name: "📌 Informasi Fitur Upload KHS/Transkrip ",
+          level: 2,
+        }),
+      })
+      .locator("input[type='file']")
+      .first(),
+  uploadedKhsFileName: (page: Page, filename: string) =>
+    page.locator("p", { hasText: filename }).first(),
   submitKhsButton: (page: Page) => page.getByRole("button", { name: "Kirim" }),
   verifySuccessUploadKhs: (page: Page) => page.getByText(/Dokumen berhasil diproses!/),
   verifyKhsDocumentOwner(page: Page, ownerName: string) {

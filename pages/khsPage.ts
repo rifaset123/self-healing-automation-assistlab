@@ -38,7 +38,9 @@ export class KhsPage extends BasePage {
       locators.khs.uploadKhsInput(this.page),
       filePath,
     );
-    await this.locatorUtils.assertVisible(locators.khs.uploadedKhsFileName(this.page, fileName)) // assume only PDF file
+    await this.locatorUtils.assertVisible(
+      locators.khs.uploadedKhsFileName(this.page, fileName),
+    ); // assume only PDF file
     const submitKHSbtn = locators.khs.submitKhsButton(this.page);
     await submitKHSbtn.click({ timeout: 15000 })
   }
@@ -52,9 +54,7 @@ export class KhsPage extends BasePage {
   }
 
   async verifySortFilter(columnName: string) {
-    await this.locatorUtils.click(
-      locators.khs.verifySortFilter(this.page),
-    );
+    await this.locatorUtils.click(locators.khs.sortButton(this.page, columnName));
 
     // Verifikasi data terurut
     const headers = await locators.khs

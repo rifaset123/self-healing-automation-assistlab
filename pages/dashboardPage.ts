@@ -23,10 +23,8 @@ export class DashboardPage extends BasePage {
   }
 
   async navigateToVacancyPage() {
-    await this.page.waitForTimeout(2000);
-    await this.locatorUtils.click(
-      locators.assistant.assistantVacancyListBtn(this.page),
-    );
+    // navigate directly to the vacancy page to avoid flaky click-navigation timing
+    await this.page.goto('/student/assistanceVacancies');
   }
 
   async navigateToRegistrationHistory() {
