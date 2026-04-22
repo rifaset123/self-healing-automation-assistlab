@@ -3,14 +3,14 @@ import { Page } from "@playwright/test";
 export const profileLocators = {
   // pages
   profileMenuButton: (page: Page) => page.locator('button[data-dropdown-toggle="dropdown-user"]'), // DC01
-  profileButton: (page: Page) => page.getByTestId("profile-btn"), // LC
+  profileButton: (page: Page) => page.getByTestId("user-profile-btn"), // LC - Updated from profile-btn
   profileHeader: (page: Page) => page.locator("dt", { hasText: "Identitas Mahasiswa" }), // DC02
-  editProfilButton: (page: Page) => page.getByRole("button", { name: /Edit Profil/ }), // lC
+  editProfilButton: (page: Page) => page.getByTestId("edit-profile-btn"), // LC - Updated from role/name pattern
   
   // upload
   uploadPhotoInput: (page: Page) => page.locator("div > input[type='file']"), // DC03
   uploadPhotoConfirmation: (page: Page) => page.locator("#uploadConfirm"),
-  uploadPhotoFileName: (page: Page) => page.getByTestId("file-name"), // TO
+  uploadPhotoFileName: (page: Page) => page.getByTestId("fileName"), // LC - Updated from file-name
   editProfileHeader: (page: Page) => page.getByRole("heading", { name: "Edit Profil" }),
 
   // form
@@ -31,7 +31,7 @@ export const profileLocators = {
     bankAccountNumberInput: (page: Page) => page.locator("#bank_number"),
     bankBookLinkInput: (page: Page) => page.locator("#passbook"),
   },
-  submitProfileButton: (page: Page) => page.locator("#submitBtn"),
+  submitProfileButton: (page: Page) => page.locator("#submitProfileBtn"), // LC - Updated from submitBtn
   submitProfileVerificationButton: (page: Page) => page.getByRole("button", { name: "Ya, Saya Yakin" }),
   verifySuccessUpdateProfile: (page: Page) => page.getByText(/Profil berhasil diperbarui/),
   profilDataVerification: {
