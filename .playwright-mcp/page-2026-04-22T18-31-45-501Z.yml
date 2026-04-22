@@ -1,0 +1,146 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e4]:
+      - link "AssistLab Logo" [ref=e7] [cursor=pointer]:
+        - /url: /
+        - img "AssistLab Logo" [ref=e8]
+      - button "Open user menu Rifa Indra Setiawan Mahasiswa Rifa Indra Setiawan" [ref=e11] [cursor=pointer]:
+        - generic [ref=e12]: Open user menu
+        - generic [ref=e13]:
+          - heading "Rifa Indra Setiawan" [level=6] [ref=e14]
+          - paragraph [ref=e15]: Mahasiswa
+        - img "Rifa Indra Setiawan" [ref=e16]
+  - complementary [ref=e17]:
+    - generic [ref=e18]:
+      - generic [ref=e19]:
+        - list [ref=e21]:
+          - listitem [ref=e22]:
+            - link [ref=e23] [cursor=pointer]:
+              - /url: http://localhost:3000/student
+              - img [ref=e25]
+              - generic [ref=e27]: Dashboard
+          - listitem [ref=e28]:
+            - link [ref=e29] [cursor=pointer]:
+              - /url: http://localhost:3000/student/document
+              - img [ref=e31]
+              - generic [ref=e33]: KHS/Transkrip
+          - listitem [ref=e34]:
+            - link [ref=e35] [cursor=pointer]:
+              - /url: http://localhost:3000/student/myAssistance
+              - img [ref=e37]
+              - generic [ref=e39]: Asistensi Saya
+          - listitem [ref=e40]:
+            - link [ref=e41] [cursor=pointer]:
+              - /url: http://localhost:3000/student/history
+              - img [ref=e43]
+              - generic [ref=e45]: Riwayat Pendaftaran
+          - listitem [ref=e46]:
+            - link [ref=e47] [cursor=pointer]:
+              - /url: http://localhost:3000/student/offer
+              - img [ref=e49]
+              - generic [ref=e51]: Penawaran Asistensi
+        - generic [ref=e53]:
+          - generic [ref=e54]:
+            - img [ref=e55]
+            - generic [ref=e56]:
+              - paragraph [ref=e57]: Perlu Bantuan?
+              - paragraph [ref=e58]: Cek disini
+          - link [ref=e60] [cursor=pointer]:
+            - /url: http://localhost:3000/student/faq
+            - text: Lihat FAQ
+      - paragraph [ref=e62]:
+        - text: Made with ☕ by
+        - link [ref=e63] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/mumtaza15/
+          - text: Mumtaza15
+        - text: "&"
+        - link [ref=e64] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/farhan-akmal-s/
+          - text: farhanakmals
+  - main [ref=e65]:
+    - generic [ref=e68]:
+      - generic [ref=e69]:
+        - heading "📊 Dashboard" [level=1] [ref=e70]
+        - heading "Selamat Datang Kembali," [level=2] [ref=e71]
+        - paragraph [ref=e72]: Pastikan data diri telah dilengkapi dan KHS/Transkrip terbaru Anda telah diunggah!
+      - generic [ref=e73]:
+        - img "image description" [ref=e74]
+        - generic [ref=e75]:
+          - img "image description" [ref=e76]
+          - generic [ref=e77]:
+            - text: 📢 Daftarkan Dirimu Menjadi Asprak Segera!!!
+            - paragraph [ref=e78]: ⌛ 7 Maret - 31 Mei 2026
+        - img "image description" [ref=e79]
+      - generic [ref=e80]:
+        - generic [ref=e81]:
+          - generic [ref=e82]:
+            - heading "Status Pendaftaran" [level=3] [ref=e83]
+            - link "Selengkapnya " [ref=e84] [cursor=pointer]:
+              - /url: http://localhost:3000/student/registrationList/1
+              - text: Selengkapnya
+              - generic [ref=e85]: 
+          - generic [ref=e86]:
+            - generic [ref=e87]:
+              - generic [ref=e88]:
+                - generic [ref=e89]:
+                  - paragraph [ref=e90]: Pengembangan Game dan Teknologi Immersive
+                  - generic [ref=e91]:
+                    - paragraph [ref=e92]: Semester 5
+                    - paragraph [ref=e94]: PGTIA1
+                    - paragraph [ref=e96]: Senin
+                    - paragraph [ref=e98]: Sesi 1-2
+                - generic [ref=e99]: Menolak Tawaran
+              - link "Lihat Pendaftaran" [ref=e101] [cursor=pointer]:
+                - /url: http://localhost:3000/student/registrationDetails/59/1
+            - generic [ref=e102]:
+              - generic [ref=e103]:
+                - generic [ref=e104]:
+                  - paragraph [ref=e105]: Praktikum Pengujian Perangkat Lunak
+                  - generic [ref=e106]:
+                    - paragraph [ref=e107]: Semester 4
+                    - paragraph [ref=e109]: PPPLA1
+                    - paragraph [ref=e111]: Selasa
+                    - paragraph [ref=e113]: Sesi 3-4
+                - generic [ref=e114]: Diproses
+              - link "Lihat Pendaftaran" [ref=e116] [cursor=pointer]:
+                - /url: http://localhost:3000/student/registrationDetails/60/1
+        - generic [ref=e117]:
+          - generic [ref=e118]:
+            - heading "Lowongan Asistensi" [level=3] [ref=e119]
+            - link "Selengkapnya " [ref=e120] [cursor=pointer]:
+              - /url: http://localhost:3000/student/assistanceVacancies
+              - text: Selengkapnya
+              - generic [ref=e121]: 
+          - generic [ref=e122]:
+            - generic [ref=e123]:
+              - generic [ref=e124]:
+                - generic [ref=e125]:
+                  - paragraph [ref=e126]: Praktikum Pengujian Perangkat Lunak
+                  - generic [ref=e127]:
+                    - paragraph [ref=e128]: Semester 4
+                    - paragraph [ref=e130]: PPPLA1
+                    - paragraph [ref=e132]: Selasa
+                    - paragraph [ref=e134]: Sesi 3-4
+                - generic [ref=e136]: Tersedia
+              - link "Lihat Detail" [ref=e139] [cursor=pointer]:
+                - /url: http://localhost:3000/student/courseDetails/1
+            - generic [ref=e140]:
+              - generic [ref=e141]:
+                - generic [ref=e142]:
+                  - paragraph [ref=e143]: Pengembangan Game dan Teknologi Immersive
+                  - generic [ref=e144]:
+                    - paragraph [ref=e145]: Semester 5
+                    - paragraph [ref=e147]: PGTIA1
+                    - paragraph [ref=e149]: Senin
+                    - paragraph [ref=e151]: Sesi 1-2
+                - generic [ref=e153]: Tersedia
+              - link "Lihat Detail" [ref=e156] [cursor=pointer]:
+                - /url: http://localhost:3000/student/courseDetails/2
+      - generic [ref=e157]:
+        - generic [ref=e158]:
+          - heading "Penawaran Asistensi" [level=3] [ref=e159]
+          - link "Selengkapnya " [ref=e160] [cursor=pointer]:
+            - /url: http://localhost:3000/student/offer
+            - text: Selengkapnya
+            - generic [ref=e161]: 
+        - paragraph [ref=e164]: ℹ️ Belum ada penawaran asistensi

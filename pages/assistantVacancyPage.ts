@@ -25,7 +25,7 @@ export class AssistantVacancyPage extends BasePage {
 
   async checkAssistantVacancisAvailable() {
     const countCourseAvailable = await locators.assistant
-      .assistantVacanciesAvailable(this.page)
+      .seeDetailsVacancyBtnList(this.page)
       .count();
     await expect(countCourseAvailable).toBeGreaterThan(0); // cek jika lowongan tersedia
     this.logger.log(

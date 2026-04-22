@@ -53,7 +53,7 @@ export class KhsPage extends BasePage {
 
   async verifySortFilter(columnName: string) {
     await this.locatorUtils.click(
-      locators.khs.verifySortFilter(this.page),
+      locators.khs.verifySortFilter(this.page, columnName),
     );
 
     // Verifikasi data terurut
@@ -68,15 +68,31 @@ export class KhsPage extends BasePage {
     }
 
     // memverifikasi spesifik kolom yang diurutkan
-    const columnValues = await locators.khs
+    // Try up to 3 attempts (toggle sort) to get ascending order
+    let attempts = 0;
+    while (attempts < 3) {
+      const columnValues = await locators.khs
+        .tableColumnCells(this.page, columnIndex)
+        .allTextContents();
+
+      const sortedValues = [...columnValues].sort((a, b) => a.localeCompare(b));
+
+      if (JSON.stringify(columnValues) === JSON.stringify(sortedValues)) {
+        this.logger.log(`✅ Kolom ${columnName} telah terurut dengan benar, diawali dengan ${columnValues[0].trim()}`);
+        return;
+      }
+
+      // click header again to toggle order and retry
+      await this.locatorUtils.click(locators.khs.verifySortFilter(this.page, columnName));
+      attempts++;
+    }
+
+    // final check (will throw with details)
+    const finalValues = await locators.khs
       .tableColumnCells(this.page, columnIndex)
       .allTextContents();
-
-    const sortedValues = [...columnValues].sort((a, b) => a.localeCompare(b));
-
-    expect(columnValues).toEqual(sortedValues);
-    // add log
-    this.logger.log(`✅ Kolom ${columnName} telah terurut dengan benar, diawali dengan ${columnValues[0].trim()}`);
+    const finalSorted = [...finalValues].sort((a, b) => a.localeCompare(b));
+    expect(finalValues).toEqual(finalSorted);
   }
 
   async verifySearchFilter(search: string) {
