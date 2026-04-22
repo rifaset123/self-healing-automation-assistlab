@@ -64,6 +64,18 @@ export class LocatorUtils {
       try {
         this.logger.log(`Percobaan ${attempt}: Mengisi input dengan: ${text}`);
         await locator.fill(text);
+
+        // Verify the value was actually set
+        const actual = await locator.inputValue();
+        const passed = actual === text;
+
+        this.logger.log(`${passed ? "✅" : "❌"} Fill assertion`);
+        this.logger.log(`   Expected : "${text}"`);
+        this.logger.log(`   Actual   : "${actual}"`);
+
+        if (!passed) {
+          throw new Error(`Fill mismatch — expected "${text}" but got "${actual}"`);
+        }
         return;
       } catch (error) {
         this.logger.error(`❌ Gagal mengisi input pada percobaan ${attempt}: ${error}`);
