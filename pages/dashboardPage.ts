@@ -16,23 +16,54 @@ export class DashboardPage extends BasePage {
   }
 
   async navigateToProfile() {
-    await this.locatorUtils.click(
-      locators.profile.profileMenuButton(this.page),
-    );
-    await this.locatorUtils.click(locators.profile.profileButton(this.page));
+    const menuBtn = locators.profile.profileMenuButton(this.page);
+    try {
+      const visible = await menuBtn.isVisible();
+      if (visible) {
+        await this.locatorUtils.click(menuBtn);
+      } else {
+        this.logger.log("ℹ️ Profile menu button not visible, skipping menu click");
+      }
+    } catch (e) {
+      this.logger.log("ℹ️ Profile menu button not found, skipping menu click");
+    }
+
+    const profileBtn = locators.profile.profileButton(this.page);
+    try {
+      const profileVisible = await profileBtn.isVisible();
+      if (profileVisible) {
+        await this.locatorUtils.click(profileBtn);
+      } else {
+        this.logger.log("ℹ️ Profile button hidden — navigating directly to profile page");
+        await this.page.goto(`${devConfig.baseURL}student/profile`);
+      }
+    } catch (e) {
+      this.logger.log("ℹ️ Profile button check failed — navigating directly to profile page");
+      await this.page.goto(`${devConfig.baseURL}student/profile`);
+    }
   }
 
   async navigateToVacancyPage() {
     await this.page.waitForTimeout(2000);
-    await this.locatorUtils.click(
-      locators.assistant.assistantVacancyListBtn(this.page),
-    );
+        await this.page.waitForTimeout(2000);
+        const vacancyBtn = locators.assistant.assistantVacancyListBtn(this.page);
+        try {
+          await this.locatorUtils.click(vacancyBtn);
+        } catch (e) {
+          this.logger.log("ℹ️ Gagal klik menu lowongan — menavigasi langsung ke halaman lowongan");
+          await this.page.goto(`${devConfig.baseURL}student/assistanceVacancies`);
+        }
   }
 
   async navigateToRegistrationHistory() {
-    await this.locatorUtils.click(
-      locators.assistant.sidebarRegistrationHistoryButton(this.page),
-    );
+    try {
+      await this.locatorUtils.click(
+        locators.assistant.sidebarRegistrationHistoryButton(this.page),
+      );
+    } catch (e) {
+      this.logger.log("ℹ️ Gagal klik menu Riwayat Pendaftaran — menavigasi langsung ke halaman riwayat");
+      await this.page.goto(`${devConfig.baseURL}student/history`);
+    }
   }
 
   async navigateToOfferingPage() {

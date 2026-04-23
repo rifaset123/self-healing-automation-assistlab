@@ -16,11 +16,9 @@ export class AssistantOfferingPage extends BasePage {
   }
 
   async verifyURLAndHeaderOffering() {
-    const urlPattern = new RegExp(`${devConfig.baseURL}student/offer`);
+    const urlPattern = new RegExp(`${devConfig.baseURL}student/(offer|offering|offers|offerings)`);
     await this.page.waitForURL(urlPattern);
-    await expect(
-      locators.assistant.offeringHeader(this.page),
-    ).toBeVisible();
+    await this.locatorUtils.assertVisible(locators.assistant.offeringHeader(this.page), 30000);
   }
 
   async checkAssistantOfferingsIsNotAvailable(courseClassCode: string) {

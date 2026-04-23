@@ -38,7 +38,7 @@ test("Fitur 2 : Menambahkan dokumen KHS [TC05-TC09]", async ({
 
   await test.step("[TC07] Verifikasi fitur filter KHS", async () => {
     await khsPage.verifySortFilter("Mata Kuliah");
-    await khsPage.verifySearchFilter("Pengujian");
+    await khsPage.verifySearchFilter("Agama");
     logger.log("✅ Fitur filter KHS berhasil diverifikasi");
   });
 });

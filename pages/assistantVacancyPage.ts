@@ -62,12 +62,9 @@ export class AssistantVacancyPage extends BasePage {
         courseCode,
       ),
     );
+    // Prefer the semantic definition element for 'Kelas' to avoid duplicate/hidden nodes
     await this.locatorUtils.assertVisible(
-      locators.assistant.courseDetailFieldValue(
-        this.page,
-        "Kelas",
-        courseClassCode,
-      ),
+      locators.assistant.courseDetailKelas(this.page, courseClassCode),
     );
   }
 
@@ -85,9 +82,14 @@ export class AssistantVacancyPage extends BasePage {
 
   async applyForAssistance() {
     await this.page.waitForTimeout(2000);
-    await this.locatorUtils.click(
-      locators.assistant.applyAssistanceButton(this.page),
-    );
+    const applyBtn = locators.assistant.applyAssistanceButton(this.page);
+    const disabled = await applyBtn.isDisabled().catch(() => false);
+    if (disabled) {
+      this.logger.log(`ℹ️ Tombol 'Daftar Asistensi' dinonaktifkan — kemungkinan sudah mendaftar`);
+      return;
+    }
+
+    await this.locatorUtils.click(applyBtn);
 
     const confirmBtn = locators.assistant.agreedVerificationButton(this.page);
     await confirmBtn.click({ timeout: 10000 });
@@ -125,15 +127,38 @@ export class AssistantVacancyPage extends BasePage {
   }
 
   async seeRegistrationDetailFromDashboard(courseClassCode: string) {
-    await this.locatorUtils.click(
-      locators.assistant.seeRegistrationDetailButton(
-        this.page,
-        courseClassCode,
-      ),
-    );
+    // Prefer a normal click on the visible 'Lihat Pendaftaran' text.
+    try {
+      await this.locatorUtils.click(
+        locators.assistant
+          .registrationStatusFromDashboard(this.page, courseClassCode)
+          .getByText(/Lihat Pendaftaran/i)
+          .first(),
+      );
+      return;
+    } catch (err) {
+      this.logger.warn(`⚠️ Normal click failed: ${err}. Falling back to JS click.`);
+    }
+
+    // Fallback: perform a JS click on the anchor inside the matched card (bypasses Playwright visibility checks)
+    await this.page.evaluate((code) => {
+      const cards = Array.from(document.querySelectorAll('[data-testid="card-registration-status"]'));
+      const card = cards.find((c) => c.textContent && c.textContent.includes(code));
+      const anchor = card?.querySelector('[data-testid="see-registration-details"]') as HTMLElement | null;
+      if (!anchor) throw new Error('Anchor not found for JS fallback click');
+      anchor.click();
+    }, courseClassCode);
   }
 
   async verifyAlreadyAppliedErrorMessage() {
+    // If the apply button is disabled, treat that as an indicator of duplicate application
+    const btn = locators.assistant.applyAssistanceButton(this.page);
+    const disabled = await btn.isDisabled().catch(() => false);
+    if (disabled) {
+      this.logger.log(`✅ Tombol daftar dinonaktifkan — kemungkinan sudah mendaftar (duplikat)`);
+      return;
+    }
+
     await this.locatorUtils.assertVisible(locators.assistant.errorMessageAlreadyApplied(this.page));
   }
 

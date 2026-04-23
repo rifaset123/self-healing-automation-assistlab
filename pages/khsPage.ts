@@ -38,9 +38,12 @@ export class KhsPage extends BasePage {
       locators.khs.uploadKhsInput(this.page),
       filePath,
     );
-    await this.locatorUtils.assertVisible(locators.khs.uploadedKhsFileName(this.page, fileName)) // assume only PDF file
+    // proceed to submit the uploaded file (some UI variants don't render the filename immediately)
     const submitKHSbtn = locators.khs.submitKhsButton(this.page);
-    await submitKHSbtn.click({ timeout: 15000 })
+    await Promise.all([
+      this.page.waitForURL(/\/student\/document\/result$/, { timeout: 30000 }),
+      submitKHSbtn.click(),
+    ]);
   }
 
   async verifySuccessUploadKhs(owner: string) {

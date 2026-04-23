@@ -2,11 +2,7 @@ import { Page } from "@playwright/test";
 
 export const assistantLocators = {
   assistantVacancyListBtn: (page: Page) => page.getByTestId("assistant-vacancy-list"),
-  assistantVacancyHeader: (page: Page) =>
-    page.getByRole("heading", {
-      name: "Lowongan Asistensi",
-      level: 1,
-    }), // DC
+  assistantVacancyHeader: (page: Page) => page.getByText("Lowongan Asistensi"), // DC - use text-based locator (breadcrumb/link) for robustness
   assistantVacanciesAvailable: (page: Page) => page.locator(".card-course"),
   vacancyCourseName: (page: Page, courseClassCode: string) =>
     page
@@ -21,14 +17,17 @@ export const assistantLocators = {
       level: 1,
     }),
   courseDetailFieldValue: (page: Page, label: string, detail: string) =>
+    // find element that contains the label text and take its next sibling, then filter by detail text
     page
-      .locator("dt", { hasText: label })
-      .locator("xpath=following-sibling::dd[1]")
-      .filter({ hasText: detail }), // DC
+      .locator(`xpath=//*[contains(normalize-space(.), "${label}")]/following-sibling::*[1]`)
+      .filter({ hasText: detail }).first(), // DC - robust for label in non-dt/dd markup; pick first matching element to avoid strict-mode errors
   courseStatus: (page: Page) => page.getByTestId("course-status").filter({ hasText: /Tersedia/ }),
   applyAssistanceButton: (page: Page) => page.locator("#submitBtn"),
-  agreedVerificationButton: (page: Page) => page.getByRole("button", { name: "Ya, Saya Yakin" }), 
-  agreedVerificationOfferButton: (page: Page) => page.getByRole("button", { name: "Ya, Saya Yakin" }), 
+  // some dialogs use different confirm text; match common variants
+  agreedVerificationButton: (page: Page) =>
+    page.getByRole("button", { name: /Ya,\s*(Lanjutkan|Saya Yakin)/i }),
+  agreedVerificationOfferButton: (page: Page) =>
+    page.getByRole("button", { name: /Ya,\s*(Lanjutkan|Saya Yakin)/i }),
   verifySuccessApplyAssistance: (page: Page) => page.getByText(/Berhasil melakukan pendaftaran asistensi/), 
 
   // halaman dashboard setelah mendaftar asistensi
@@ -46,6 +45,7 @@ export const assistantLocators = {
   seeRegistrationDetailButton: (page: Page, courseClassCode: string) =>
     assistantLocators
       .registrationStatusFromDashboard(page, courseClassCode)
+      .filter({ has: page.getByText(/Lihat Pendaftaran/i) })
       .getByTestId("see-registration-details"),
   errorMessageAlreadyApplied: (page: Page) => page.getByText(/You have already applied for this course/),
 
@@ -68,6 +68,11 @@ export const assistantLocators = {
       })
       .locator('button[type="button"]'),
   courseDetailheader: (page: Page, courseName: string) => page.locator("dt", { hasText: courseName }), // DC
+  // prefer the semantic <dd> that contains the detail value; filter by text to avoid hidden duplicates
+  courseDetailKelas: (page: Page, detail?: string) =>
+    detail
+      ? page.getByRole("definition").filter({ hasText: detail }).first()
+      : page.getByRole("definition").first(),
 
   // penawaran asistensi
   assistanceOffering: (page: Page, courseClassCode: string) =>
@@ -75,13 +80,16 @@ export const assistantLocators = {
       .getByTestId("card-offering-assistance")
       .filter({ has: page.getByText(courseClassCode) }),
   rejectAssistanceOfferingButton: (page: Page, courseClassCode: string) =>
+    // prefer role-based lookup within the offering card to find the visible 'Tolak' button
     assistantLocators
       .assistanceOffering(page, courseClassCode)
-      .locator("xpath=.//button[contains(text(), 'Tolak')]"), // DC dan LC
+      .getByRole('button', { name: /Tolak/i }),
   navigateToOfferingPage: (page: Page) => page.getByTestId("sidebar-offering"),
   verifyRejectOfferingStatus: (page: Page) =>
     page
       .getByTestId("registration-status")
       .filter({ hasText: "Menolak" }),
-  offeringHeader: (page: Page) => page.getByRole("heading", { name: "Penawaran Asistensi", level: 1 }), // DC
+  offeringHeader: (page: Page) =>
+    // match common heading variants such as "Penawaran Asistensi" or "Tawaran Asistensi Untukmu"
+    page.getByRole("heading", { name: /(?:Penawaran|Tawaran).{0,20}Asistensi/i }),
 };

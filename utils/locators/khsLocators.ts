@@ -2,10 +2,7 @@ import { Page } from "@playwright/test";
 
 export const khsLocators = {
   sidebarKhsButton: (page: Page) => page.getByTestId("sidebar-khs"),
-  khsHeader: (page: Page) => page.getByRole("heading", {
-      name: "📤 KHS/Transkrip",
-      level: 1,
-    }),
+  khsHeader: (page: Page) => page.getByText("📤 KHS/Transkrip"),
   // menambah KHS
   addKhsButton: (page: Page) => page.getByTestId("add-khs-btn"),
   addKhsInformationHeader: (page: Page) => page.getByRole("heading", {
@@ -13,7 +10,7 @@ export const khsLocators = {
       level: 2,
     }),
   uploadKhsInput: (page: Page) => page.locator("input[type='file']#khsFile"),
-  uploadedKhsFileName: (page: Page, filename: string) => page.locator("p[x-text='file.name']").filter({ hasText: filename }),
+  uploadedKhsFileName: (page: Page, filename: string) => page.getByText(filename),
   submitKhsButton: (page: Page) => page.getByRole("button", { name: "Kirim" }),
   verifySuccessUploadKhs: (page: Page) => page.getByText(/Dokumen berhasil diproses!/),
   verifyKhsDocumentOwner(page: Page, ownerName: string) {
@@ -21,7 +18,7 @@ export const khsLocators = {
   },
   // filter
   verifySearchFilterInput: (page: Page) => page.locator('input[type="search"]'),
-  verifyFilteredData: (page: Page, search: string) => page.locator("td p", { hasText: search }), // DC
+  verifyFilteredData: (page: Page, search: string) => page.locator("tbody tr td").filter({ hasText: search }), // DC
   verifySortFilter: (page: Page) => page.locator("#mata-kuliah-row"),
   // verifySortFilter: (page: Page, columnName: string) => page.locator("button.datatable-sorter", { hasText: columnName }), // lebih fleksibel
   sortButton: (page: Page, columnName: string) => page.getByRole("button", { name: columnName }),

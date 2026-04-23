@@ -33,6 +33,9 @@ export class ProfilePage extends BasePage {
       locators.profile.uploadPhotoInput(this.page),
       filePath,
     );
+
+    // click the Upload button to trigger server-side processing
+    await this.locatorUtils.click(locators.profile.uploadPhotoButton(this.page));
   }
 
   async verifySuccessUploadProfilePhoto(filePath: string) {
