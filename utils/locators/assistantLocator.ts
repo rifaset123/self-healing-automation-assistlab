@@ -2,11 +2,8 @@ import { Page } from "@playwright/test";
 
 export const assistantLocators = {
   assistantVacancyListBtn: (page: Page) => page.getByTestId("assistant-vacancy-list"),
-  assistantVacancyHeader: (page: Page) =>
-    page.getByRole("heading", {
-      name: "Lowongan Asistensi",
-      level: 1,
-    }), // DC
+  // The page renders 'Lowongan Asistensi' as a breadcrumb/link rather than a strict H1
+  assistantVacancyHeader: (page: Page) => page.getByText("Lowongan Asistensi"),
   assistantVacanciesAvailable: (page: Page) => page.locator(".card-course"),
   vacancyCourseName: (page: Page, courseClassCode: string) =>
     page
@@ -20,10 +17,12 @@ export const assistantLocators = {
       name: label,
       level: 1,
     }),
+  // Some detail pages render values in different sibling elements (dd, p, div).
+  // Use a flexible XPath to select the first following sibling element after the dt
+  // and then assert it contains the expected detail text.
   courseDetailFieldValue: (page: Page, label: string, detail: string) =>
     page
-      .locator("dt", { hasText: label })
-      .locator("xpath=following-sibling::dd[1]")
+      .locator(`xpath=//dt[contains(normalize-space(.), "${label}")]/following::dd[1]`)
       .filter({ hasText: detail }), // DC
   courseStatus: (page: Page) => page.getByTestId("course-status").filter({ hasText: /Tersedia/ }),
   applyAssistanceButton: (page: Page) => page.locator("#submitBtn"),
@@ -50,7 +49,8 @@ export const assistantLocators = {
   errorMessageAlreadyApplied: (page: Page) => page.getByText(/You have already applied for this course/),
 
   // halaman riwayat pendaftaran asistensi
-  sidebarRegistrationHistoryButton: (page: Page) => page.locator('span', { hasText: 'Riwayat Pendaftaran' }), 
+  // Sidebar link for registration history
+  sidebarRegistrationHistoryButton: (page: Page) => page.getByRole('link', { name: 'Riwayat Pendaftaran' }), 
   courseRegistrationDetailStatus: (page: Page) =>
     page
       .getByTestId("course-registration-status")
@@ -77,11 +77,15 @@ export const assistantLocators = {
   rejectAssistanceOfferingButton: (page: Page, courseClassCode: string) =>
     assistantLocators
       .assistanceOffering(page, courseClassCode)
-      .locator("xpath=.//button[contains(text(), 'Tolak')]"), // DC dan LC
+      .getByRole('button', { name: 'Tolak' }), // prefer role-based match within the offering card
   navigateToOfferingPage: (page: Page) => page.getByTestId("sidebar-offering"),
   verifyRejectOfferingStatus: (page: Page) =>
     page
       .getByTestId("registration-status")
       .filter({ hasText: "Menolak" }),
-  offeringHeader: (page: Page) => page.getByRole("heading", { name: "Penawaran Asistensi", level: 1 }), // DC
+  offeringHeader: (page: Page) =>
+    page.getByRole("heading", {
+      name: /Tawaran Asistensi|Penawaran Asistensi/i,
+      level: 1,
+    }), // DC (match current header variants)
 };

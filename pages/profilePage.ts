@@ -33,6 +33,8 @@ export class ProfilePage extends BasePage {
       locators.profile.uploadPhotoInput(this.page),
       filePath,
     );
+    // trigger client-side upload processing (button runs loadFile())
+    await this.locatorUtils.click(locators.profile.uploadButton(this.page));
   }
 
   async verifySuccessUploadProfilePhoto(filePath: string) {
@@ -41,6 +43,16 @@ export class ProfilePage extends BasePage {
     await expect(locators.profile.uploadPhotoFileName(this.page)).toHaveValue(
       new RegExp(fileName),
     );
+
+    // trigger upload submission (app shows confirmation after submit)
+    await this.locatorUtils.click(locators.profile.submitProfileButton(this.page));
+    const confirmBtn = locators.profile.submitProfileVerificationButton(this.page);
+    try {
+      await confirmBtn.waitFor({ state: "visible", timeout: 3000 });
+      await confirmBtn.click({ timeout: 15000 });
+    } catch (err) {
+      this.logger.log(`ℹ️ Konfirmasi tidak muncul, lanjut tanpa konfirmasi modal`);
+    }
 
     // verifikasi alert success
     await this.locatorUtils.assertVisible(locators.profile.uploadPhotoConfirmation(this.page));

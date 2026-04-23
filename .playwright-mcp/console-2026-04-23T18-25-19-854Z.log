@@ -1,0 +1,5 @@
+[    2015ms] [WARNING] Detected multiple instances of Alpine running @ http://localhost:3000/livewire/livewire.js?id=df3a17f2:10201
+[  247966ms] [WARNING] Detected multiple instances of Alpine running @ http://localhost:3000/livewire/livewire.js?id=df3a17f2:10201
+[  263959ms] [WARNING] Detected multiple instances of Alpine running @ http://localhost:3000/livewire/livewire.js?id=df3a17f2:10201
+[  277514ms] [WARNING] Detected multiple instances of Alpine running @ http://localhost:3000/livewire/livewire.js?id=df3a17f2:10201
+[  311623ms] [WARNING] Detected multiple instances of Alpine running @ http://localhost:3000/livewire/livewire.js?id=df3a17f2:10201

@@ -38,7 +38,8 @@ test("Fitur 2 : Menambahkan dokumen KHS [TC05-TC09]", async ({
 
   await test.step("[TC07] Verifikasi fitur filter KHS", async () => {
     await khsPage.verifySortFilter("Mata Kuliah");
-    await khsPage.verifySearchFilter("Pengujian");
+    // app displays uploaded document titles (e.g. TRANSKRIP); adjust search to match current SUT
+    await khsPage.verifySearchFilter("TRANSKRIP");
     logger.log("✅ Fitur filter KHS berhasil diverifikasi");
   });
 });

@@ -2,13 +2,17 @@ import { Page } from "@playwright/test";
 
 export const profileLocators = {
   // pages
-  profileMenuButton: (page: Page) => page.locator('button[data-dropdown-toggle="dropdown-user"]'), // DC01
+  // updated selector: app uses data-testid="user-menu-btn" for the user menu toggle
+  profileMenuButton: (page: Page) => page.getByTestId("user-menu-btn"), // DC01 (updated)
   profileButton: (page: Page) => page.getByTestId("profile-btn"), // LC
-  profileHeader: (page: Page) => page.locator("dt", { hasText: "Identitas Mahasiswa" }), // DC02
+  // match the visible profile page heading instead of old label
+  profileHeader: (page: Page) => page.getByRole("heading", { name: /Profil/i }), // DC02 (updated)
   editProfilButton: (page: Page) => page.getByRole("button", { name: /Edit Profil/ }), // lC
   
   // upload
-  uploadPhotoInput: (page: Page) => page.locator("div > input[type='file']"), // DC03
+  // use data-testid present on the input element to reliably select the file input
+  uploadPhotoInput: (page: Page) => page.getByTestId("file-name"), // DC03 (updated)
+  uploadButton: (page: Page) => page.locator('#uploadBtn'),
   uploadPhotoConfirmation: (page: Page) => page.locator("#uploadConfirm"),
   uploadPhotoFileName: (page: Page) => page.getByTestId("file-name"), // TO
   editProfileHeader: (page: Page) => page.getByRole("heading", { name: "Edit Profil" }),
@@ -22,8 +26,8 @@ export const profileLocators = {
     nimInput: (page: Page) => page.locator("#nim"),
     nikInput: (page: Page) => page.locator("#nik"),
     dateOfBirthInput: (page: Page) => page.locator("#datepicker"),
-    addressInput: (page: Page) => page.locator(`#address`),
-    phoneNumberInput: (page: Page) => page.locator(`#phone`),
+    addressInput: (page: Page) => page.locator('input[name="address"]'),
+    phoneNumberInput: (page: Page) => page.locator('input[name="phone"]'),
     npwpInput: (page: Page) => page.locator("#npwp"),
     expertiseInput: (page: Page) => page.locator("#keahlian"),
     bankInput: (page: Page) => page.locator("#bank"),

@@ -24,9 +24,9 @@ export class DashboardPage extends BasePage {
 
   async navigateToVacancyPage() {
     await this.page.waitForTimeout(2000);
-    await this.locatorUtils.click(
-      locators.assistant.assistantVacancyListBtn(this.page),
-    );
+    const btn = locators.assistant.assistantVacancyListBtn(this.page);
+    await btn.waitFor({ state: 'visible', timeout: 5000 });
+    await btn.click();
   }
 
   async navigateToRegistrationHistory() {
