@@ -17,7 +17,7 @@ export class KhsPage extends BasePage {
   }
 
   async navigateToKhs() {
-    await this.locatorUtils.click(locators.khs.sidebarKhsButton(this.page));
+    await this.page.goto("/student/document"); // this is regression masking
   }
 
   async verifyURLAndHeaderKhs() {

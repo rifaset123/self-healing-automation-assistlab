@@ -2,10 +2,10 @@ import { Page } from "@playwright/test";
 
 export const profileLocators = {
   // pages
-  profileMenuButton: (page: Page) => page.locator('button[data-dropdown-toggle="dropdown-user"]'), // DC01
-  profileButton: (page: Page) => page.getByTestId("profile-btn"), // LC
+  profileMenuButton: (page: Page) => page.getByTestId("user-menu-btn"), // DC01
+  profileButton: (page: Page) => page.getByRole("menuitem", { name: "Profile" }), // LC
   profileHeader: (page: Page) => page.locator("dt", { hasText: "Identitas Mahasiswa" }), // DC02
-  editProfilButton: (page: Page) => page.getByRole("button", { name: /Edit Profil/ }), // lC
+  editProfilButton: (page: Page) => page.getByRole("button", { name: /Perbarui Profil/ }), // lC
   
   // upload
   uploadPhotoInput: (page: Page) => page.locator("div > input[type='file']"), // DC03
@@ -31,7 +31,7 @@ export const profileLocators = {
     bankAccountNumberInput: (page: Page) => page.locator("#bank_number"),
     bankBookLinkInput: (page: Page) => page.locator("#passbook"),
   },
-  submitProfileButton: (page: Page) => page.locator("#submitBtn"),
+  submitProfileButton: (page: Page) => page.getByRole("button", { name: "Kirim" }),
   submitProfileVerificationButton: (page: Page) => page.getByRole("button", { name: "Ya, Saya Yakin" }),
   verifySuccessUpdateProfile: (page: Page) => page.getByText(/Profil berhasil diperbarui/),
   profilDataVerification: {

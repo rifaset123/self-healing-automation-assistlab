@@ -12,7 +12,7 @@ export const khsLocators = {
       name: "📌 Informasi Fitur Upload KHS/Transkrip ",
       level: 2,
     }),
-  uploadKhsInput: (page: Page) => page.locator("input[type='file']#khsFile"),
+  uploadKhsInput: (page: Page) => page.locator("input[type='file']"),
   uploadedKhsFileName: (page: Page, filename: string) => page.locator("p[x-text='file.name']").filter({ hasText: filename }),
   submitKhsButton: (page: Page) => page.getByRole("button", { name: "Kirim" }),
   verifySuccessUploadKhs: (page: Page) => page.getByText(/Dokumen berhasil diproses!/),
@@ -21,8 +21,8 @@ export const khsLocators = {
   },
   // filter
   verifySearchFilterInput: (page: Page) => page.locator('input[type="search"]'),
-  verifyFilteredData: (page: Page, search: string) => page.locator("td p", { hasText: search }), // DC
-  verifySortFilter: (page: Page) => page.locator("#mata-kuliah-row"),
+  verifyFilteredData: (page: Page, search: string) => page.locator("td", { hasText: search }), // DC
+  verifySortFilter: (page: Page) => page.getByRole("button", { name: "Mata Kuliah" }),
   // verifySortFilter: (page: Page, columnName: string) => page.locator("button.datatable-sorter", { hasText: columnName }), // lebih fleksibel
   sortButton: (page: Page, columnName: string) => page.getByRole("button", { name: columnName }),
   tableHeaders: (page: Page) => page.locator("thead th"),
