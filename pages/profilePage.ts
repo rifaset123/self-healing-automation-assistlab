@@ -33,6 +33,8 @@ export class ProfilePage extends BasePage {
       locators.profile.uploadPhotoInput(this.page),
       filePath,
     );
+    // Click the upload button to trigger the loadFile() function
+    await this.locatorUtils.click(this.page.locator("#uploadBtn"));
   }
 
   async verifySuccessUploadProfilePhoto(filePath: string) {

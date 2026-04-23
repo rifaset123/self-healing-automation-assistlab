@@ -1,0 +1,6 @@
+[    2846ms] [WARNING] Detected multiple instances of Alpine running @ http://localhost:3000/livewire/livewire.js?id=df3a17f2:10201
+[    8092ms] [LOG] Level 0: H6 - text-sm font-medium @ :5
+[    8092ms] [LOG] Level 1: DIV - text-end @ :5
+[    8092ms] [LOG] Level 2: BUTTON - flex gap-3 text-sm rounded-xl cursor-pointer @ :5
+[    8092ms] [LOG] Level 3: DIV -  @ :5
+[    8092ms] [LOG] Level 4: DIV - flex items-center ms-3 @ :5

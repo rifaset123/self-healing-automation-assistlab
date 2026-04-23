@@ -2,9 +2,9 @@ import { Page } from "@playwright/test";
 
 export const profileLocators = {
   // pages
-  profileMenuButton: (page: Page) => page.locator('button[data-dropdown-toggle="dropdown-user"]'), // DC01
+  profileMenuButton: (page: Page) => page.getByTestId("user-menu-btn"), // DC01
   profileButton: (page: Page) => page.getByTestId("profile-btn"), // LC
-  profileHeader: (page: Page) => page.locator("dt", { hasText: "Identitas Mahasiswa" }), // DC02
+  profileHeader: (page: Page) => page.getByText("Identitas Mahasiswa"), // DC02
   editProfilButton: (page: Page) => page.getByRole("button", { name: /Edit Profil/ }), // lC
   
   // upload
@@ -22,8 +22,8 @@ export const profileLocators = {
     nimInput: (page: Page) => page.locator("#nim"),
     nikInput: (page: Page) => page.locator("#nik"),
     dateOfBirthInput: (page: Page) => page.locator("#datepicker"),
-    addressInput: (page: Page) => page.locator(`#address`),
-    phoneNumberInput: (page: Page) => page.locator(`#phone`),
+    addressInput: (page: Page) => page.locator('#address[name="address"]'),
+    phoneNumberInput: (page: Page) => page.locator('#phone[name="phone"]'),
     npwpInput: (page: Page) => page.locator("#npwp"),
     expertiseInput: (page: Page) => page.locator("#keahlian"),
     bankInput: (page: Page) => page.locator("#bank"),

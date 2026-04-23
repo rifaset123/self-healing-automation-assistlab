@@ -1,0 +1,3 @@
+[    1969ms] [WARNING] Detected multiple instances of Alpine running @ http://localhost:3000/livewire/livewire.js?id=df3a17f2:10201
+[   10287ms] [WARNING] Detected multiple instances of Alpine running @ http://localhost:3000/livewire/livewire.js?id=df3a17f2:10201
+[   86534ms] [LOG] handleFileSelected function exists @ :3

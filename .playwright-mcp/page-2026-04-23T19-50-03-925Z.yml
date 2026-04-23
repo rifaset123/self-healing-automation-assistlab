@@ -1,0 +1,120 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e4]:
+      - link "AssistLab Logo" [ref=e7] [cursor=pointer]:
+        - /url: /
+        - img "AssistLab Logo" [ref=e8]
+      - button "Open user menu Rifa Indra Setiawan Mahasiswa" [ref=e12] [cursor=pointer]:
+        - generic [ref=e13]: Open user menu
+        - generic [ref=e14]:
+          - heading "Rifa Indra Setiawan" [level=6] [ref=e15]
+          - paragraph [ref=e16]: Mahasiswa
+        - img [ref=e17]
+  - complementary [ref=e18]:
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - list [ref=e22]:
+          - listitem [ref=e23]:
+            - link [ref=e24] [cursor=pointer]:
+              - /url: http://localhost:3000/student
+              - img [ref=e26]
+              - generic [ref=e28]: Dashboard
+          - listitem [ref=e29]:
+            - link [ref=e30] [cursor=pointer]:
+              - /url: http://localhost:3000/student/document
+              - img [ref=e32]
+              - generic [ref=e34]: KHS/Transkrip
+          - listitem [ref=e35]:
+            - link [ref=e36] [cursor=pointer]:
+              - /url: http://localhost:3000/student/myAssistance
+              - img [ref=e38]
+              - generic [ref=e40]: Asistensi Saya
+          - listitem [ref=e41]:
+            - link [ref=e42] [cursor=pointer]:
+              - /url: http://localhost:3000/student/history
+              - img [ref=e44]
+              - heading [level=1] [ref=e47]: Riwayat Pendaftaran
+          - listitem [ref=e48]:
+            - link [ref=e49] [cursor=pointer]:
+              - /url: http://localhost:3000/student/offer
+              - img [ref=e51]
+              - generic [ref=e53]: Penawaran Asistensi
+        - generic [ref=e55]:
+          - generic [ref=e56]:
+            - img [ref=e57]
+            - generic [ref=e58]:
+              - paragraph [ref=e59]: Perlu Bantuan?
+              - paragraph [ref=e60]: Cek disini
+          - link [ref=e62] [cursor=pointer]:
+            - /url: http://localhost:3000/student/faq
+            - text: Lihat FAQ
+      - paragraph [ref=e64]:
+        - text: Made with ☕ by
+        - link [ref=e65] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/mumtaza15/
+          - text: Mumtaza15
+        - text: "&"
+        - link [ref=e66] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/farhan-akmal-s/
+          - text: farhanakmals
+  - main [ref=e67]:
+    - generic [ref=e70]:
+      - generic [ref=e71]:
+        - heading "👤 Profil" [level=1] [ref=e72]
+        - button "Edit Profil" [ref=e73] [cursor=pointer]:
+          - img [ref=e74]
+          - text: Edit Profil
+      - generic [ref=e77]:
+        - generic [ref=e79]: Identitas Mahasiswa
+        - generic [ref=e80]:
+          - term [ref=e81]: Foto Profil
+          - definition [ref=e82]:
+            - img "Rifa Indra Setiawan" [ref=e83]
+        - generic [ref=e84]:
+          - term [ref=e85]: Email
+          - definition [ref=e86]: rifaindrasetiawan@mail.ugm.ac.id
+        - generic [ref=e87]:
+          - term [ref=e88]: Nama Lengkap
+          - definition [ref=e89]: Rifa Indra Setiawan
+        - generic [ref=e90]:
+          - term [ref=e91]: Angkatan
+          - definition [ref=e92]: "-"
+        - generic [ref=e93]:
+          - term [ref=e94]: IPK
+          - definition [ref=e95]: Masukkan KHS/Transkrip terlebih dahulu
+        - generic [ref=e96]:
+          - term [ref=e97]: NIM
+          - definition [ref=e98]: "-"
+        - generic [ref=e99]:
+          - term [ref=e100]: NIK
+          - definition [ref=e101]: "-"
+        - generic [ref=e102]:
+          - term [ref=e103]: Tanggal Lahir
+          - definition [ref=e104]: 23/04/2026
+        - generic [ref=e105]:
+          - term [ref=e106]: Alamat
+          - definition [ref=e107]: "-"
+        - generic [ref=e108]:
+          - term [ref=e109]: Nomor Handphone
+          - definition [ref=e110]: "-"
+        - generic [ref=e111]:
+          - term [ref=e112]: NPWP
+          - definition [ref=e113]: "-"
+        - generic [ref=e114]:
+          - term [ref=e115]: Bidang Keahlian
+          - definition [ref=e116]: "-"
+      - generic [ref=e118]:
+        - term [ref=e120]: Data Keperluan Honorarium
+        - generic [ref=e121]:
+          - term [ref=e122]: Bank
+          - definition [ref=e123]: "-"
+        - generic [ref=e124]:
+          - term [ref=e125]: Nama Bank
+          - definition [ref=e126]: "-"
+        - generic [ref=e127]:
+          - term [ref=e128]: Nomor Bank
+          - definition [ref=e129]: "-"
+        - generic [ref=e130]:
+          - term [ref=e131]: Link Buku Tabungan Google Drive
+          - link "-" [ref=e132] [cursor=pointer]:
+            - /url: ""
