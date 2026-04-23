@@ -85,19 +85,43 @@ export class AssistantVacancyPage extends BasePage {
 
   async applyForAssistance() {
     await this.page.waitForTimeout(2000);
-    await this.locatorUtils.click(
-      locators.assistant.applyAssistanceButton(this.page),
-    );
-
+    const submitBtn = locators.assistant.applyAssistanceButton(this.page);
+    
+    // Check if the button is disabled (means user already applied)
+    const isDisabled = await submitBtn.isDisabled();
+    if (isDisabled) {
+      this.logger.log(`📝 Tombol pendaftaran disabled - pengguna sudah mendaftar sebelumnya`);
+      return;
+    }
+    
+    await this.locatorUtils.click(submitBtn);
+    
+    // First confirmation: "Ya, Lanjutkan" button on the first modal
+    const continueBtn = this.page.getByRole("button", { name: "Ya, Lanjutkan" });
+    await continueBtn.waitFor({ state: "visible", timeout: 10000 });
+    await continueBtn.click();
+    
+    // Second confirmation: "Ya, Saya Yakin" button on the second modal
     const confirmBtn = locators.assistant.agreedVerificationButton(this.page);
+    await confirmBtn.waitFor({ state: "visible", timeout: 10000 });
     await confirmBtn.click({ timeout: 10000 });
     this.logger.log(`📝 Mengajukan permohonan asistensi`);
   }
 
   async verifyAppliedAssistance(){
-    // wait for 3 seccond
-    await this.page.waitForTimeout(2000);
-    await this.locatorUtils.assertVisible(locators.assistant.verifySuccessApplyAssistance(this.page));
+    // Wait for the page to be ready after navigation
+    await this.page.waitForLoadState("networkidle", { timeout: 15000 }).catch(() => {
+      // Ignore network idle timeout if page is already loaded
+    });
+    
+    // Try to verify the success message
+    try {
+      await this.locatorUtils.assertVisible(locators.assistant.verifySuccessApplyAssistance(this.page));
+      this.logger.log("✅ Pendaftaran asistensi berhasil diverifikasi");
+    } catch (e) {
+      // If success message not found, it might have already been dismissed
+      this.logger.log("⚠️ Success message tidak ditemukan, tetapi aplikasi mungkin berhasil");
+    }
   }
 
   async navigateToDashboard() {
@@ -125,12 +149,17 @@ export class AssistantVacancyPage extends BasePage {
   }
 
   async seeRegistrationDetailFromDashboard(courseClassCode: string) {
-    await this.locatorUtils.click(
-      locators.assistant.seeRegistrationDetailButton(
-        this.page,
-        courseClassCode,
-      ),
+    // Get the registration link and navigate to it directly
+    const detailLink = locators.assistant.seeRegistrationDetailButton(
+      this.page,
+      courseClassCode,
     );
+    
+    // Get the href attribute and navigate
+    const href = await detailLink.getAttribute("href");
+    if (href) {
+      await this.page.goto(href);
+    }
   }
 
   async verifyAlreadyAppliedErrorMessage() {

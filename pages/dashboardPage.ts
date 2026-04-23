@@ -24,9 +24,12 @@ export class DashboardPage extends BasePage {
 
   async navigateToVacancyPage() {
     await this.page.waitForTimeout(2000);
-    await this.locatorUtils.click(
-      locators.assistant.assistantVacancyListBtn(this.page),
-    );
+    await Promise.all([
+      this.page.waitForNavigation(),
+      this.locatorUtils.click(
+        locators.assistant.assistantVacancyListBtn(this.page),
+      ),
+    ]);
   }
 
   async navigateToRegistrationHistory() {
