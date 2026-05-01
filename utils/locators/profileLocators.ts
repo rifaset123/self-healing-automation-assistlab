@@ -31,8 +31,12 @@ export const profileLocators = {
     bankAccountNumberInput: (page: Page) => page.locator("#bank_number"),
     bankBookLinkInput: (page: Page) => page.locator("#passbook"),
   },
+
+  // submit
   submitProfileButton: (page: Page) => page.locator("#submitBtn"),
   submitProfileVerificationButton: (page: Page) => page.getByRole("button", { name: "Ya, Saya Yakin" }),
+
+  // verification
   verifySuccessUpdateProfile: (page: Page) => page.getByText(/Profil berhasil diperbarui/),
   profilDataVerification: {
     profileFieldValue: (page: Page, label: string, description: string) =>

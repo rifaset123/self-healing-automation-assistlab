@@ -1,0 +1,3 @@
+[     614ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3000/student/dashboard:0
+[    4183ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3000/student/dashboard:0
+[   19267ms] [WARNING] Detected multiple instances of Alpine running @ http://localhost:3000/livewire/livewire.js?id=df3a17f2:10201

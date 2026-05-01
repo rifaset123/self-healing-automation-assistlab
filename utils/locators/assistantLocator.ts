@@ -1,6 +1,7 @@
 import { Page } from "@playwright/test";
 
 export const assistantLocators = {
+  // cek halaman lowongan asistensi
   assistantVacancyListBtn: (page: Page) => page.getByTestId("assistant-vacancy-list"),
   assistantVacancyHeader: (page: Page) =>
     page.getByRole("heading", {
@@ -31,7 +32,7 @@ export const assistantLocators = {
   agreedVerificationOfferButton: (page: Page) => page.getByRole("button", { name: "Ya, Saya Yakin" }), 
   verifySuccessApplyAssistance: (page: Page) => page.getByText(/Berhasil melakukan pendaftaran asistensi/), 
 
-  // halaman dashboard setelah mendaftar asistensi
+  // verifikasi asistensi
   sidebarDashboardButton: (page: Page) => page.getByTestId("sidebar-dashboard"),
   assistantRegistrationStatusCard: (page: Page) => page.getByTestId("card-registration-status"),
   registrationStatusFromDashboard: (page: Page, courseClassCode: string) =>
@@ -47,7 +48,6 @@ export const assistantLocators = {
     assistantLocators
       .registrationStatusFromDashboard(page, courseClassCode)
       .getByTestId("see-registration-details"),
-  errorMessageAlreadyApplied: (page: Page) => page.getByText(/You have already applied for this course/),
 
   // halaman riwayat pendaftaran asistensi
   sidebarRegistrationHistoryButton: (page: Page) => page.locator('span', { hasText: 'Riwayat Pendaftaran' }), 
@@ -68,6 +68,7 @@ export const assistantLocators = {
       })
       .locator('button[type="button"]'),
   courseDetailheader: (page: Page, courseName: string) => page.locator("dt", { hasText: courseName }), // DC
+  errorMessageAlreadyApplied: (page: Page) => page.getByText(/You have already applied for this course/),
 
   // penawaran asistensi
   assistanceOffering: (page: Page, courseClassCode: string) =>

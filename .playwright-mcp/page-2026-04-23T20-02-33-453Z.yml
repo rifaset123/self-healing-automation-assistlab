@@ -1,0 +1,95 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e4]:
+      - link "AssistLab Logo" [ref=e7] [cursor=pointer]:
+        - /url: /
+        - img "AssistLab Logo" [ref=e8]
+      - button "Open user menu Rifa Indra Setiawan Mahasiswa" [ref=e12] [cursor=pointer]:
+        - generic [ref=e13]: Open user menu
+        - generic [ref=e14]:
+          - heading "Rifa Indra Setiawan" [level=6] [ref=e15]
+          - paragraph [ref=e16]: Mahasiswa
+        - img [ref=e17]
+  - complementary [ref=e18]:
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - list [ref=e22]:
+          - listitem [ref=e23]:
+            - link [ref=e24] [cursor=pointer]:
+              - /url: http://localhost:3000/student
+              - img [ref=e26]
+              - generic [ref=e28]: Dashboard
+          - listitem [ref=e29]:
+            - link [ref=e30] [cursor=pointer]:
+              - /url: http://localhost:3000/student/document
+              - img [ref=e32]
+              - generic [ref=e34]: KHS/Transkrip
+          - listitem [ref=e35]:
+            - link [ref=e36] [cursor=pointer]:
+              - /url: http://localhost:3000/student/myAssistance
+              - img [ref=e38]
+              - generic [ref=e40]: Asistensi Saya
+          - listitem [ref=e41]:
+            - link [ref=e42] [cursor=pointer]:
+              - /url: http://localhost:3000/student/history
+              - img [ref=e44]
+              - heading [level=1] [ref=e47]: Riwayat Pendaftaran
+          - listitem [ref=e48]:
+            - link [ref=e49] [cursor=pointer]:
+              - /url: http://localhost:3000/student/offer
+              - img [ref=e51]
+              - generic [ref=e53]: Penawaran Asistensi
+        - generic [ref=e55]:
+          - generic [ref=e56]:
+            - img [ref=e57]
+            - generic [ref=e58]:
+              - paragraph [ref=e59]: Perlu Bantuan?
+              - paragraph [ref=e60]: Cek disini
+          - link [ref=e62] [cursor=pointer]:
+            - /url: http://localhost:3000/student/faq
+            - text: Lihat FAQ
+      - paragraph [ref=e64]:
+        - text: Made with ☕ by
+        - link [ref=e65] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/mumtaza15/
+          - text: Mumtaza15
+        - text: "&"
+        - link [ref=e66] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/farhan-akmal-s/
+          - text: farhanakmals
+  - main [ref=e67]:
+    - generic [ref=e70]:
+      - generic [ref=e71]:
+        - paragraph [ref=e73]: 📤 KHS/Transkrip
+        - link "Tambah KHS/Transkrip" [ref=e74] [cursor=pointer]:
+          - /url: http://localhost:3000/student/addDocument
+          - img [ref=e75]
+          - text: Tambah KHS/Transkrip
+      - generic [ref=e78]:
+        - table [ref=e80]:
+          - rowgroup [ref=e81]:
+            - row "No Tanggal Nama Berkas Detail" [ref=e82]:
+              - columnheader "No" [ref=e83]:
+                - button "No" [ref=e84]:
+                  - generic [ref=e85] [cursor=pointer]:
+                    - text: "No"
+                    - img [ref=e86]
+              - columnheader "Tanggal" [ref=e88]:
+                - button "Tanggal" [ref=e89]:
+                  - generic [ref=e90] [cursor=pointer]:
+                    - text: Tanggal
+                    - img [ref=e91]
+              - columnheader "Nama Berkas" [ref=e93]:
+                - button "Nama Berkas" [ref=e94]:
+                  - generic [ref=e95] [cursor=pointer]:
+                    - text: Nama Berkas
+                    - img [ref=e96]
+              - columnheader "Detail" [ref=e98]:
+                - button "Detail" [ref=e99]:
+                  - generic [ref=e100]: Detail
+          - rowgroup [ref=e101]:
+            - row "No entries found" [ref=e102]:
+              - cell "No entries found" [ref=e103]
+        - generic [ref=e104]:
+          - navigation:
+            - list

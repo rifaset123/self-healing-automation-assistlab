@@ -1,0 +1,8 @@
+[    2641ms] [WARNING] Detected multiple instances of Alpine running @ http://localhost:3000/livewire/livewire.js?id=df3a17f2:10201
+[   14114ms] [WARNING] Detected multiple instances of Alpine running @ http://localhost:3000/livewire/livewire.js?id=df3a17f2:10201
+[   14120ms] [WARNING] Flowbite: Instance with ID verify-modal does not exist. @ https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js:0
+[   14120ms] [ERROR] Modal with id verify-modal has not been initialized. Please initialize it using the data-modal-target attribute. @ https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js:0
+[   14120ms] [WARNING] Flowbite: Instance with ID verify-modal does not exist. @ https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js:0
+[   14120ms] [ERROR] Modal with id verify-modal has not been initialized. Please initialize it using the data-modal-target attribute. @ https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js:0
+[   14121ms] [WARNING] Flowbite: Instance with ID verify-modal does not exist. @ https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js:0
+[   14121ms] [ERROR] Modal with id verify-modal has not been initialized. Please initialize it using the data-modal-target attribute. @ https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js:0

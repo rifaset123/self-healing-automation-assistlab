@@ -1,11 +1,13 @@
 import { Page } from "@playwright/test";
 
 export const khsLocators = {
+  // navigasi
   sidebarKhsButton: (page: Page) => page.getByTestId("sidebar-khs"),
   khsHeader: (page: Page) => page.getByRole("heading", {
       name: "📤 KHS/Transkrip",
       level: 1,
     }),
+    
   // menambah KHS
   addKhsButton: (page: Page) => page.getByTestId("add-khs-btn"),
   addKhsInformationHeader: (page: Page) => page.getByRole("heading", {
@@ -19,6 +21,7 @@ export const khsLocators = {
   verifyKhsDocumentOwner(page: Page, ownerName: string) {
     return page.locator("p", { hasText: ownerName });
   },
+  
   // filter
   verifySearchFilterInput: (page: Page) => page.locator('input[type="search"]'),
   verifyFilteredData: (page: Page, search: string) => page.locator("td p", { hasText: search }), // DC

@@ -12,34 +12,6 @@ setup("authenticate", async ({ page }) => {
   const logger = new Logger();
   const loginPage = new LoginPage(page, logger);
 
-  // cek apabila sudah ada session, skip login
-  // if (fs.existsSync(authFile)) {
-  //   try {
-  //     const data = JSON.parse(fs.readFileSync(authFile, "utf8"));
-
-  //     if (Array.isArray(data) && data.length === 0) {
-  //       console.log("[STATUS] Auth file empty. Running login...");
-  //     } else {
-  //       console.log("[STATUS] Auth already exists. Skipping login.");
-  //       return;
-  //     }
-  //   } catch (err) {
-  //     console.log("[STATUS] Auth file invalid. Running login...");
-  //   }
-  // }
-  // const hasAuthFile = fs.existsSync(authFile);
-
-  // fs.mkdirSync(path.dirname(authFile), { recursive: true });
-  // if (fs.existsSync(authFile)) {
-  //   fs.unlinkSync(authFile);
-  // }
-
-  // fs.writeFileSync(
-  //   authFile,
-  //   JSON.stringify({ cookies: [], origins: [] }, null, 2),
-  //   "utf8",
-  // );
-
   function hasValidAuthFile(file: string): boolean {
     if (!fs.existsSync(file) || fs.statSync(file).size === 0) return false;
 
