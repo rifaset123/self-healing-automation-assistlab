@@ -1,0 +1,29 @@
+LC04 — Tombol simpan
+═══════════════════════════════
+
+INFORMASI
+- adalah Baseline
++ adalah Ground Truth
+
+File: locators/profileLocators.ts
+─────────────────────────────────
+- submitProfileButton: (page: Page) => page.locator("#submitBtn")
+
++ submitProfileButton: (page: Page) => page.locator("#submitProfileBtn")
+
+Perubahan pada SUT
+═══════════════════════════════
+
+INFORMASI SUT
+- adalah Baseline
++ adalah Kode dengan injeksi gangguan
+
+File: AssistLab-Frontend-main/resources/views/student/profile/edit.blade.php
+─────────────────────────────────
+- <input onchange="loadFile(event)" name="image" accept="image/*"
+-    class="..."
+-    id="small_size" type="file" data-testid="file-name">
+
++ <input onchange="loadFile(event)" name="image" accept="image/*"
++    class="..."
++    id="small_size" type="file" data-testid="fileName">

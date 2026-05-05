@@ -1,0 +1,25 @@
+LC01 — Menu profil
+═══════════════════════════════
+
+INFORMASI
+- adalah Baseline
++ adalah Ground Truth
+
+File: locators/profileLocators.ts
+─────────────────────────────────
+- profileButton: (page: Page) => page.getByTestId("profile-btn")
+
++ profileButton: (page: Page) => page.getByTestId("user-profile-btn")
+
+Perubahan pada SUT
+═══════════════════════════════
+
+INFORMASI SUT
+- adalah Baseline
++ adalah Kode dengan injeksi gangguan
+
+File: AssistLab-Frontend-main/resources/views/layouts/navbar.blade.php
+─────────────────────────────────
+- <a href="{{ $url }}" class="flex items-center gap-1" data-testid="profile-btn">
+
++ <a href="{{ $url }}" class="flex items-center gap-1" data-testid="user-profile-btn">

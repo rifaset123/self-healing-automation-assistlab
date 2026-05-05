@@ -1,0 +1,29 @@
+LC03 — Preview nama file foto profil
+═══════════════════════════════
+
+INFORMASI
+- adalah Baseline
++ adalah Ground Truth
+
+File: locators/profileLocators.ts
+─────────────────────────────────
+- uploadPhotoFileName: (page: Page) => page.getByTestId("file-name")
+
++ uploadPhotoFileName: (page: Page) => page.getByTestId("fileName")
+
+Perubahan pada SUT
+═══════════════════════════════
+
+INFORMASI SUT
+- adalah Baseline
++ adalah Kode dengan injeksi gangguan
+
+File: AssistLab-Frontend-main/resources/views/student/profile/edit.blade.php
+─────────────────────────────────
+- <input onchange="loadFile(event)" name="image" accept="image/*"
+-    class="..."
+-    id="small_size" type="file" data-testid="file-name">
+
++ <input onchange="loadFile(event)" name="image" accept="image/*"
++    class="..."
++    id="small_size" type="file" data-testid="fileName">
