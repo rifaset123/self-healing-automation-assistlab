@@ -78,11 +78,11 @@ export const assistantLocators = {
   rejectAssistanceOfferingButton: (page: Page, courseClassCode: string) =>
     assistantLocators
       .assistanceOffering(page, courseClassCode)
-      .locator("xpath=.//button[contains(text(), 'Tolak')]"), // DC dan LC
+      .getByTestId("reject-offer-btn"),
   navigateToOfferingPage: (page: Page) => page.getByTestId("sidebar-offering"),
   verifyRejectOfferingStatus: (page: Page) =>
     page
-      .getByTestId("registration-status")
-      .filter({ hasText: "Menolak" }),
+      .getByTestId("offer-status")
+      .filter({ hasText: "/Menolak/" }),
   offeringHeader: (page: Page) => page.getByRole("heading", { name: "Penawaran Asistensi", level: 1 }), // DC
 };
