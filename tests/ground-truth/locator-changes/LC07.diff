@@ -1,4 +1,4 @@
-LC04 — Tombol simpan
+LC06 — Filter KHS
 ═══════════════════════════════
 
 INFORMASI
@@ -7,9 +7,9 @@ INFORMASI
 
 File: locators/profileLocators.ts
 ─────────────────────────────────
-- submitProfileButton: (page: Page) => page.locator("#submitBtn")
+- verifySortFilter: (page: Page) => page.locator("#mata-kuliah-row"),
 
-+ submitProfileButton: (page: Page) => page.locator("#submitProfileBtn")
++ verifySortFilter: (page: Page) => page.getByTestId("khs-subject-filter"),
 
 Perubahan pada SUT
 ═══════════════════════════════
@@ -18,8 +18,8 @@ INFORMASI SUT
 - adalah Baseline
 + adalah Kode dengan injeksi gangguan
 
-File: AssistLab-Frontend-main/resources/views/student/profile/edit.blade.php
+File: AssistLab-Frontend-main/resources/views/student/profile/result_khs.blade.php
 ─────────────────────────────────
-- <button type="button" id="submitBtn" data-modal-target="popup-modal" ...>Kirim</button>
+- <span class="flex items-center font-semibold text-sm normal-case cursor-pointer" id="mata-kuliah-row">
 
-+ <button type="button" id="submitProfileBtn" data-modal-target="popup-modal" ...>Kirim</button>
++ <span class="flex items-center font-semibold text-sm normal-case cursor-pointer" id="subject-row" data-testid="khs-subject-filter">
