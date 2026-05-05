@@ -1,0 +1,26 @@
+LC11 — Status pendaftaran pada laman dashboard
+═══════════════════════════════
+
+INFORMASI
+- adalah Baseline
++ adalah Ground Truth
+
+File: locators/assistantLocator.ts
+─────────────────────────────────
+- assistantRegistrationStatusCard: (page: Page) => page.getByTestId("card-registration-status"), 
+
++ assistantRegistrationStatusCard: (page: Page) => page.getByTestId("cardRegistrationStatus"),
+
+
+Perubahan pada SUT
+═══════════════════════════════
+
+INFORMASI SUT
+- adalah Baseline
++ adalah Kode dengan injeksi gangguan
+
+File: AssistLab-Frontend-main/resources/views/student/dashboard/index.blade.php
+─────────────────────────────────
+- <div class="max-w p-6 bg-white border border-gray-200 rounded-lg shadow-sm" data-testid="card-registration-status">
+
++ <div class="max-w p-6 bg-white border border-gray-200 rounded-lg shadow-sm" data-testid="cardRegistrationStatus">

@@ -68,7 +68,7 @@ export const assistantLocators = {
       })
       .locator('button[type="button"]'),
   courseDetailheader: (page: Page, courseName: string) => page.locator("dt", { hasText: courseName }), // DC
-  errorMessageAlreadyApplied: (page: Page) => page.getByText(/Anda sudah mendaftar kelas ini/),
+  errorMessageAlreadyApplied: (page: Page) => page.getByText(/You have already applied for this course/),
 
   // penawaran asistensi
   assistanceOffering: (page: Page, courseClassCode: string) =>

@@ -53,7 +53,7 @@ export const assistantLocators = {
   sidebarRegistrationHistoryButton: (page: Page) => page.locator('span', { hasText: 'Riwayat Pendaftaran' }), 
   courseRegistrationDetailStatus: (page: Page) =>
     page
-      .getByTestId("courseRegistrationStatus")
+      .getByTestId("course-registration-status")
       .filter({ hasText: /Diproses/ }),
   periodRegistrationRow: (page: Page, period: string) => // DC
     page
@@ -68,7 +68,7 @@ export const assistantLocators = {
       })
       .locator('button[type="button"]'),
   courseDetailheader: (page: Page, courseName: string) => page.locator("dt", { hasText: courseName }), // DC
-  errorMessageAlreadyApplied: (page: Page) => page.getByText(/Anda sudah mendaftar kelas ini/),
+  errorMessageAlreadyApplied: (page: Page) => page.getByText(/You have already applied for this course/),
 
   // penawaran asistensi
   assistanceOffering: (page: Page, courseClassCode: string) =>
