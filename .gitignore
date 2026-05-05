@@ -13,4 +13,3 @@ logs/
 # JetBrains IDE settings
 .idea/
 data/
-utils/env/dev.ts
