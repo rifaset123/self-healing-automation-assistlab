@@ -11,7 +11,7 @@ export const assistantLocators = {
   assistantVacanciesAvailable: (page: Page) => page.getByTestId("course-card-list"),
   vacancyCourseName: (page: Page, courseClassCode: string) =>
     page
-      .locator(".card-course")
+      .locator(".available-card-course")
       .filter({ has: page.getByText(courseClassCode) })
       .getByTestId("see-details-vacancy-btn"),
 

@@ -15,7 +15,7 @@ File: locators/assistantLocator.ts
 
 +  vacancyCourseName: (page: Page, courseClassCode: string) =>
 +    page
-+      .locator(".card-course")
++      .locator(".available-card-course")
 +      .filter({ has: page.getByText(courseClassCode) })
 +      .getByTestId("see-details-vacancy-btn"),
 
@@ -28,6 +28,8 @@ INFORMASI SUT
 
 File: AssistLab-Frontend-main/resources/views/student/dashboard/assistance_vacancies.blade.php
 ─────────────────────────────────
-- <a href="{{ route('student.courseDetails', ['id' => $item['id']]) }}" data-testid="see-details-btn" ...>
+- <div class="card-course ..." data-semester="{{ $item['semester'] }}" data-testid="course-card-list">
+-   <a href="{{ route('student.courseDetails', ['id' => $item['id']]) }}" data-testid="see-details-btn" ...>
 
-+ <a href="{{ route('student.courseDetails', ['id' => $item['id']]) }}" data-testid="see-details-vacancy-btn" ...>
++ <div class="available-card-course ..." data-semester="{{ $item['semester'] }}" data-testid="course-card-list">
++   <a href="{{ route('student.courseDetails', ['id' => $item['id']]) }}" data-testid="see-details-vacancy-btn" ...>
