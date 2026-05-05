@@ -37,7 +37,11 @@ export class ProfilePage extends BasePage {
 
   async verifySuccessUploadProfilePhoto(filePath: string) {
     const fileName = path.basename(filePath);
-    // verifikasi alert success (file name element may not be present in current UI)
+        // konfirmasi nama file
+    await expect(locators.profile.uploadPhotoFileName(this.page)).toHaveValue(
+      new RegExp(fileName),
+    );
+    
     await this.locatorUtils.assertVisible(
       locators.profile.uploadPhotoConfirmation(this.page),
     );

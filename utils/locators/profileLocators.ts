@@ -11,7 +11,7 @@ export const profileLocators = {
   // upload
   uploadPhotoInput: (page: Page) => page.locator("div > input[type='file']"), // DC03
   uploadPhotoConfirmation: (page: Page) => page.locator("#uploadConfirm"),
-  uploadPhotoFileName: (page: Page) => page.getByTestId("file-name"), // TO
+  uploadPhotoFileName: (page: Page) => page.locator("input[type='file']"),
   editProfileHeader: (page: Page) => page.getByRole("heading", { name: "Edit Profil" }),
 
   // form
