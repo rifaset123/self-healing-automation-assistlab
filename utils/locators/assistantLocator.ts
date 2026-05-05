@@ -83,6 +83,6 @@ export const assistantLocators = {
   verifyRejectOfferingStatus: (page: Page) =>
     page
       .getByTestId("offer-status")
-      .filter({ hasText: "/Menolak/" }),
+      .filter({ hasText: /Menolak/ }),
   offeringHeader: (page: Page) => page.getByRole("heading", { name: "Penawaran Asistensi", level: 1 }), // DC
 };
