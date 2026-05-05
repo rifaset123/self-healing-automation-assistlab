@@ -5,7 +5,7 @@ INFORMASI
 - adalah Baseline
 + adalah Ground Truth
 
-File: locators/profileLocators.ts
+File: locators/khsLocators.ts
 ─────────────────────────────────
 - sidebarKhsButton: (page: Page) => page.getByTestId("sidebar-khs"),
 

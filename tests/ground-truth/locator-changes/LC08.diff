@@ -1,0 +1,25 @@
+LC08 — List kartu asistensi
+═══════════════════════════════
+
+INFORMASI
+- adalah Baseline
++ adalah Ground Truth
+
+File: locators/assistantLocator.ts
+─────────────────────────────────
+- assistantVacanciesAvailable: (page: Page) => page.locator(".card-course"),
+
++ assistantVacanciesAvailable: (page: Page) => page.getByTestId("course-card-list"),
+
+Perubahan pada SUT
+═══════════════════════════════
+
+INFORMASI SUT
+- adalah Baseline
++ adalah Kode dengan injeksi gangguan
+
+File: AssistLab-Frontend-main/resources/views/student/dashboard/assistance_vacancies.blade.php
+─────────────────────────────────
+- <div class="card-course p-6 bg-white border border-gray-200 rounded-lg shadow-sm" data-semester="{{ $item['semester'] }}">
+
++ <div class="available-card-course p-6 bg-white border border-gray-200 rounded-lg shadow-sm" data-semester="{{ $item['semester'] }}" data-testid="course-card-list">

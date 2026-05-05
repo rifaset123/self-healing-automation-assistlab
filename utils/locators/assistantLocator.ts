@@ -8,12 +8,12 @@ export const assistantLocators = {
       name: "Lowongan Asistensi",
       level: 1,
     }), // DC
-  assistantVacanciesAvailable: (page: Page) => page.locator(".card-course"),
+  assistantVacanciesAvailable: (page: Page) => page.getByTestId("course-card-list"),
   vacancyCourseName: (page: Page, courseClassCode: string) =>
     page
       .locator(".card-course")
       .filter({ has: page.getByText(courseClassCode) })
-      .getByTestId("see-details-btn"),
+      .getByTestId("see-details-vacancy-btn"),
 
   // halaman detail lowongan asistensi
   pageDetailHeading: (page: Page, label: string) =>
@@ -28,7 +28,7 @@ export const assistantLocators = {
       .filter({ hasText: detail }), // DC
   courseStatus: (page: Page) => page.getByTestId("course-status").filter({ hasText: /Tersedia/ }),
   applyAssistanceButton: (page: Page) => page.locator("#submitBtn"),
-  agreedVerificationButton: (page: Page) => page.getByRole("button", { name: "Ya, Saya Yakin" }), 
+  agreedVerificationButton: (page: Page) => page.getByTestId("confirm-registration-btn"), 
   agreedVerificationOfferButton: (page: Page) => page.getByRole("button", { name: "Ya, Saya Yakin" }), 
   verifySuccessApplyAssistance: (page: Page) => page.getByText(/Berhasil melakukan pendaftaran asistensi/), 
 

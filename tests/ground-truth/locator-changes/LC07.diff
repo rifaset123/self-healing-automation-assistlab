@@ -1,11 +1,11 @@
-LC06 — Filter KHS
+LC07 — Filter KHS
 ═══════════════════════════════
 
 INFORMASI
 - adalah Baseline
 + adalah Ground Truth
 
-File: locators/profileLocators.ts
+File: locators/khsLocators.ts
 ─────────────────────────────────
 - verifySortFilter: (page: Page) => page.locator("#mata-kuliah-row"),
 
