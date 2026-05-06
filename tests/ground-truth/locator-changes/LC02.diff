@@ -1,0 +1,29 @@
+LC02 — Tombol edit profil
+═══════════════════════════════
+
+INFORMASI
+- adalah Baseline
++ adalah Ground Truth
+
+File: locators/profileLocators.ts
+─────────────────────────────────
+- editProfilButton: (page: Page) => page.getByRole("button", { name: /Edit Profil/ })
+
++ editProfilButton: (page: Page) => page.getByTestId("edit-profile-btn"),
+
+Perubahan pada SUT
+═══════════════════════════════
+
+INFORMASI SUT
+- adalah Baseline
++ adalah Kode dengan injeksi gangguan
+
+File: AssistLab-Frontend-main/resources/views/student/profile/index.blade.php
+─────────────────────────────────
+- <a href="{{ route('student.profileEdit') }}"  data-testid="edit-profile-btn" role="button" >
+-    Edit Profil
+- </a>
+
++ <a href="{{ route('student.profileEdit') }}"  data-testid="edit-profile-btn" role="button" >
++    Perbarui Profil
++ </a>

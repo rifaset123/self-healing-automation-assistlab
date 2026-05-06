@@ -1,0 +1,35 @@
+LC09 — Detail lowongan asistensi
+═══════════════════════════════
+
+INFORMASI
+- adalah Baseline
++ adalah Ground Truth
+
+File: locators/assistantLocator.ts
+─────────────────────────────────
+-  vacancyCourseName: (page: Page, courseClassCode: string) =>
+-    page
+-      .locator(".card-course")
+-      .filter({ has: page.getByText(courseClassCode) })
+-      .getByTestId("see-details-btn"),
+
++  vacancyCourseName: (page: Page, courseClassCode: string) =>
++    page
++      .locator(".available-card-course")
++      .filter({ has: page.getByText(courseClassCode) })
++      .getByTestId("see-details-vacancy-btn"),
+
+Perubahan pada SUT
+═══════════════════════════════
+
+INFORMASI SUT
+- adalah Baseline
++ adalah Kode dengan injeksi gangguan
+
+File: AssistLab-Frontend-main/resources/views/student/dashboard/assistance_vacancies.blade.php
+─────────────────────────────────
+- <div class="card-course ..." data-semester="{{ $item['semester'] }}" data-testid="course-card-list">
+-   <a href="{{ route('student.courseDetails', ['id' => $item['id']]) }}" data-testid="see-details-btn" ...>
+
++ <div class="available-card-course ..." data-semester="{{ $item['semester'] }}" data-testid="course-card-list">
++   <a href="{{ route('student.courseDetails', ['id' => $item['id']]) }}" data-testid="see-details-vacancy-btn" ...>

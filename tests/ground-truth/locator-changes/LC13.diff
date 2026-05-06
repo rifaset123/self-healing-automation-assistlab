@@ -1,0 +1,28 @@
+LC13 — Pendaftaran duplikat
+═══════════════════════════════
+
+INFORMASI
+- adalah Baseline
++ adalah Ground Truth
+
+File: locators/assistantLocator.ts
+─────────────────────────────────
+-  errorMessageAlreadyApplied: (page: Page) => page.getByText(/You have already applied for this course/),
+
++  errorMessageAlreadyApplied: (page: Page) => page.getByText(/Anda sudah mendaftar kelas ini/),
+
+Perubahan pada SUT
+═══════════════════════════════
+
+INFORMASI SUT
+- adalah Baseline
++ adalah Kode dengan injeksi gangguan
+
+# backend
+File: AssistLab-Backend-main/app/services/applicant.py 
+─────────────────────────────────
+- if existing_application:
+-    raise HTTPException(status_code=400, detail="You have already applied for this course")
+
++ if existing_application:
++    raise HTTPException(status_code=400, detail="Anda sudah mendaftar kelas ini")

@@ -1,0 +1,25 @@
+LC07 — Filter KHS
+═══════════════════════════════
+
+INFORMASI
+- adalah Baseline
++ adalah Ground Truth
+
+File: locators/khsLocators.ts
+─────────────────────────────────
+- verifySortFilter: (page: Page) => page.locator("#mata-kuliah-row"),
+
++ verifySortFilter: (page: Page) => page.getByTestId("khs-subject-filter"),
+
+Perubahan pada SUT
+═══════════════════════════════
+
+INFORMASI SUT
+- adalah Baseline
++ adalah Kode dengan injeksi gangguan
+
+File: AssistLab-Frontend-main/resources/views/student/profile/result_khs.blade.php
+─────────────────────────────────
+- <span class="flex items-center font-semibold text-sm normal-case cursor-pointer" id="mata-kuliah-row">
+
++ <span class="flex items-center font-semibold text-sm normal-case cursor-pointer" id="subject-row" data-testid="khs-subject-filter">

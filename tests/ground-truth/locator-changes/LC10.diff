@@ -1,0 +1,36 @@
+LC10 — Tombol konfirmasi pendaftaran
+═══════════════════════════════
+
+INFORMASI
+- adalah Baseline
++ adalah Ground Truth
+
+File: locators/assistantLocator.ts
+─────────────────────────────────
+- agreedVerificationButton: (page: Page) => page.getByRole("button", { name: "Ya, Saya Yakin" }), 
+
++ agreedVerificationButton: (page: Page) => page.getByTestId("confirm-registration-btn"), 
+
+
+Perubahan pada SUT
+═══════════════════════════════
+
+INFORMASI SUT
+- adalah Baseline
++ adalah Kode dengan injeksi gangguan
+
+File: AssistLab-Frontend-main/resources/views/student/dashboard/course_detail.blade.php
+─────────────────────────────────
+- <button type="submit" data-modal-hide="popup-modal" type="button" 
+-    class="...">
+-    <a href="{{ route('student.apply-assistant', ['user_id' => session('user_id'), 'course_schedule_id' => $data['id']]) }}">
+-        Ya, Saya Yakin
+-    </a>
+- </button>
+
++ <button type="submit" data-modal-hide="popup-modal" type="button" data-testid="confirm-registration-btn"
++    class="...">
++    <a href="{{ route('student.apply-assistant', ['user_id' => session('user_id'), 'course_schedule_id' => $data['id']]) }}">
++        Ya, Lanjutkan
++    </a>
++ </button>
