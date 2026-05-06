@@ -79,13 +79,13 @@ export const assistantLocators = {
       .getByTestId("card-offering-assistance")
       .filter({ has: page.getByText(courseClassCode) }),
   rejectAssistanceOfferingButton: (page: Page, courseClassCode: string) =>
-    assistantLocators
-      .assistanceOffering(page, courseClassCode)
-      .locator("xpath=.//button[contains(text(), 'Tolak')]"), // DC dan LC
+      assistantLocators
+        .assistanceOffering(page, courseClassCode)
+        .getByRole("button", { name : "Tolak"}),
   navigateToOfferingPage: (page: Page) => page.getByTestId("sidebar-offering"),
   verifyRejectOfferingStatus: (page: Page) =>
     page
       .getByTestId("registration-status")
       .filter({ hasText: "Menolak" }),
-  offeringHeader: (page: Page) => page.getByRole("heading", { name: "Penawaran Asistensi", level: 1 }), // DC
+  offeringHeader: (page: Page) => page.getByTestId("offering-header")
 };
