@@ -4,7 +4,7 @@ export const profileLocators = {
   // pages
   profileMenuButton: (page: Page) => page.getByTestId("user-menu-btn"), // DC01
   profileButton: (page: Page) => page.getByTestId("profile-btn"), // LC
-  profileHeader: (page: Page) => page.locator("div", { hasText: "Identitas Mahasiswa" }), // DC02
+  profileHeader: (page: Page) => page.getByText("Identitas Mahasiswa"), // DC02
   editProfilButton: (page: Page) => page.getByRole("button", { name: /Edit Profil/ }), // lC
   
   // upload
