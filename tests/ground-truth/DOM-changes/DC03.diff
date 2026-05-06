@@ -9,7 +9,7 @@ File: locators/profileLocators.ts
 ─────────────────────────────────
 - 
 
-+ uploadPhotoButton: (page: Page) => page.locator(".uploadBtn"),
++ uploadPhotoButton: (page: Page) => page.locator("#uploadBtn"),
 
 File: pages/profilePage.ts
 ─────────────────────────────────

@@ -9,7 +9,7 @@ File: locators/profileLocators.ts
 ─────────────────────────────────
 - profileHeader: (page: Page) => page.locator("dt", { hasText: "Identitas Mahasiswa" }),
 
-+ profileHeader: (page: Page) => page.locator("div", { hasText: "Identitas Mahasiswa" }),
++ profileHeader: (page: Page) => page.getByText("Identitas Mahasiswa"),
 
 Perubahan pada SUT
 ═══════════════════════════════
