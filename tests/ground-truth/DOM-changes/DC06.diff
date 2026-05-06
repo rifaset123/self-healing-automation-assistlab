@@ -18,6 +18,8 @@ File: pages/khsPage.ts
 - 
 -    await this.locatorUtils.uploadFile(...);
 -    await this.locatorUtils.assertVisible(locators.khs.uploadedKhsFileName(this.page, fileName))
+-    const submitKHSbtn = locators.khs.submitKhsButton(this.page);
+-    await submitKHSbtn.click({ timeout: 15000 })
 -    ...
 - }
 
