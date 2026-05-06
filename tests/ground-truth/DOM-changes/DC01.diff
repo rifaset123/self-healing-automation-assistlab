@@ -9,7 +9,7 @@ File: locators/profileLocators.ts
 ─────────────────────────────────
 - profileMenuButton: (page: Page) => page.locator('button[data-dropdown-toggle="dropdown-user"]')
 
-+ profileMenuButton: (page: Page) => page.getbyTestId("user-menu-btn")
++ profileMenuButton: (page: Page) => page.getByTestId("user-menu-btn")
 
 Perubahan pada SUT
 ═══════════════════════════════

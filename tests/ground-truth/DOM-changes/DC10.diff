@@ -14,11 +14,19 @@ File: locators/assistantLocators.ts
 
 File: pages/assistantVacancyPage.ts
 ─────────────────────────────────
-- 
+- await this.locatorUtils.assertVisible(locators.assistant.verifyVacancyCorrect(this.page, courseClassCode));
+- ...
 
 + await this.locatorUtils.assertVisible(locators.assistant.verifyVacancyCorrect(this.page, courseClassCode));
 + const continueBtn = locators.assistant.continueButton(this.page);
 + await continueBtn.click({ timeout: 10000 });
++ ...
+
+File: tests/baseline/F3-assistant.spec.ts
+─────────────────────────────────
+- await assistantPage.applyForAssistance();
+
++ await assistantPage.applyForAssistance(courseDetail.courseClassCode);
 
 Perubahan pada SUT
 ═══════════════════════════════
