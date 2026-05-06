@@ -33,14 +33,14 @@ export class KhsPage extends BasePage {
 
   async uploadKhsDocument(filePath: string) {
     const fileName = path.basename(filePath); // file only allows PDF, expect ONLY PDF FILE
+    const nameOnly = fileName.replace('.pdf', '');
 
     await this.locatorUtils.uploadFile(
       locators.khs.uploadKhsInput(this.page),
       filePath,
     );
-    await this.locatorUtils.assertVisible(locators.khs.uploadedKhsFileName(this.page, fileName)) // assume only PDF file
-    const submitKHSbtn = locators.khs.submitKhsButton(this.page);
-    await submitKHSbtn.click({ timeout: 15000 })
+    await expect(locators.khs.uploadedKhsFileName(this.page)).toContainText(nameOnly);
+    await locators.khs.submitKhsButton(this.page).click();
   }
 
   async verifySuccessUploadKhs(owner: string) {

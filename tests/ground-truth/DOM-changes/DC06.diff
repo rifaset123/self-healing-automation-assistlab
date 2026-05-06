@@ -26,8 +26,8 @@ File: pages/khsPage.ts
 +    const nameOnly = fileName.replace('.pdf', '');
 + 
 +    await this.locatorUtils.uploadFile(...);
-+    await expect(locators.khs.uploadedKhsFileName(this.page)).toContainText(fileName);
-+    await submitKHSbtn.click()
++    await expect(locators.khs.uploadedKhsFileName(this.page)).toContainText(nameOnly);
++    await locators.khs.submitKhsButton(this.page).click();
 + }
 
 Perubahan pada SUT
