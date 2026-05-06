@@ -129,6 +129,7 @@ export class AssistantVacancyPage extends BasePage {
   }
 
   async seeRegistrationDetailFromDashboard(courseClassCode: string) {
+    await this.locatorUtils.click(locators.assistant.assistantRegistrationStatusCard(this.page).filter({ hasText: courseClassCode }).first());
     await this.locatorUtils.click(
       locators.assistant.seeRegistrationDetailButton(
         this.page,

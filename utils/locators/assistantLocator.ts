@@ -53,7 +53,7 @@ export const assistantLocators = {
       .getByTestId("see-registration-details"),
 
   // halaman riwayat pendaftaran asistensi
-  sidebarRegistrationHistoryButton: (page: Page) => page.locator('span', { hasText: 'Riwayat Pendaftaran' }), 
+  sidebarRegistrationHistoryButton: (page: Page) => page.getByTestId("sidebar-registration-history"),
   courseRegistrationDetailStatus: (page: Page) =>
     page
       .getByTestId("course-registration-status")

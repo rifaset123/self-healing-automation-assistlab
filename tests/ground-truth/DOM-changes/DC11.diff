@@ -12,7 +12,6 @@ File: pages/assistantVacancyPage.ts
 - }
 
 + async seeRegistrationDetailFromDashboard(courseClassCode: string) {
-+    ...
 +    await this.locatorUtils.click(locators.assistant.assistantRegistrationStatusCard(this.page).filter({ hasText: courseClassCode }).first());
 +    ...
 + }

@@ -20,7 +20,7 @@ File: pages/assistantVacancyPage.ts
 + const continueBtn = locators.assistant.continueButton(this.page);
 + await continueBtn.click({ timeout: 10000 });
 
-File: tests/F3-assistant.spec.ts
+File: tests/baseline/F3-assistant.spec.ts
 ─────────────────────────────────
 - await assistantPage.applyForAssistance();
 

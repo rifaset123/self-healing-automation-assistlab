@@ -55,8 +55,6 @@ test("Fitur 4 : Memverifikasi pendaftaran asistensi [TC11-TC13]", async ({
     await assistantPage.clickSeeDetailsByCourseClassCode(courseDetail.courseClassCode);
     await assistantPage.verifyVacancyDetailPage(courseDetail.courseAbbreviation, courseDetail.courseCode, courseDetail.courseClassCode,);
     await assistantPage.verifyCourseStatusAvailable();
-    await assistantPage.applyForAssistance();
-    // menampilkan error message karena mendaftar ke lowongan asistensi yang sama
-    await assistantPage.verifyAlreadyAppliedErrorMessage();
+    await assistantPage.verifyDisableApplyButton();
   });
 });

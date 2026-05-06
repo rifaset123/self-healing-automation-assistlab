@@ -19,7 +19,7 @@ File: pages/profilePage.ts
 +    await this.locatorUtils.click(locators.profile.uploadPhotoButton(this.page));
 +  }
 
-File: tests/baseline/profile.spec.ts
+File: tests/baseline/F1-profile.spec.ts
 ─────────────────────────────────
 - await test.step("[TC03] Mengunggah foto mahasiswa", async () => {
 -    await profilePage.uploadProfilePhoto(photoPath);
