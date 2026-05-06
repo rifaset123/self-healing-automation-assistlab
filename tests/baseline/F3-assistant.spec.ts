@@ -40,7 +40,7 @@ test("Fitur 3 : Melihat dan mendaftar asistensi [TC08-TC10]", async ({
   });
 
   await test.step(`[TC10] Mendaftar asistensi pada kelas ${courseDetail.courseClassCode}`, async () => {
-    await assistantPage.applyForAssistance();
+    await assistantPage.applyForAssistance(courseDetail.courseClassCode);
     await assistantPage.verifyAppliedAssistance();
     logger.log(`✅ Pengguna berhasil mendaftar asistensi pada kelas ${courseDetail.courseClassCode}`,);
   });

@@ -6,7 +6,7 @@ export const assistantLocators = {
   assistantVacancyHeader: (page: Page) =>
     page.getByRole("heading", {
       name: "Lowongan Asistensi",
-      level: 1,
+      level: 3,
     }), // DC
   assistantVacanciesAvailable: (page: Page) => page.locator(".card-course"),
   vacancyCourseName: (page: Page, courseClassCode: string) =>
@@ -22,12 +22,15 @@ export const assistantLocators = {
       level: 1,
     }),
   courseDetailFieldValue: (page: Page, label: string, detail: string) =>
-    page
-      .locator("dt", { hasText: label })
-      .locator("xpath=following-sibling::dd[1]")
-      .filter({ hasText: detail }), // DC
+      page
+        .getByText(label)
+        .locator('xpath=ancestor::div[contains(@class,"grid")]')
+        .locator('dd')
+        .filter({ hasText: detail }),
   courseStatus: (page: Page) => page.getByTestId("course-status").filter({ hasText: /Tersedia/ }),
   applyAssistanceButton: (page: Page) => page.locator("#submitBtn"),
+  verifyVacancyCorrect: (page: Page, courseClassCode: string) => page.getByTestId("kelas").filter({ hasText: courseClassCode }),
+  continueButton: (page: Page) => page.getByRole("button", { name: "Ya, Lanjutkan" }), 
   agreedVerificationButton: (page: Page) => page.getByRole("button", { name: "Ya, Saya Yakin" }), 
   agreedVerificationOfferButton: (page: Page) => page.getByRole("button", { name: "Ya, Saya Yakin" }), 
   verifySuccessApplyAssistance: (page: Page) => page.getByText(/Berhasil melakukan pendaftaran asistensi/), 

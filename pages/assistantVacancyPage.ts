@@ -20,7 +20,7 @@ export class AssistantVacancyPage extends BasePage {
       `${devConfig.baseURL}student/assistanceVacancies`,
     );
     await this.page.waitForURL(urlPattern);
-    expect(locators.assistant.assistantVacancyHeader(this.page),).toBeVisible();
+    await expect(locators.assistant.assistantVacancyHeader(this.page),).toBeVisible();
   }
 
   async checkAssistantVacancisAvailable() {
@@ -83,11 +83,15 @@ export class AssistantVacancyPage extends BasePage {
   }
 
 
-  async applyForAssistance() {
+  async applyForAssistance(courseClassCode: string) {
     await this.page.waitForTimeout(2000);
     await this.locatorUtils.click(
       locators.assistant.applyAssistanceButton(this.page),
     );
+
+    await this.locatorUtils.assertVisible(locators.assistant.verifyVacancyCorrect(this.page, courseClassCode));
+    const continueBtn = locators.assistant.continueButton(this.page);
+    await continueBtn.click({ timeout: 10000 });
 
     const confirmBtn = locators.assistant.agreedVerificationButton(this.page);
     await confirmBtn.click({ timeout: 10000 });
