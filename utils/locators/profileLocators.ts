@@ -2,13 +2,14 @@ import { Page } from "@playwright/test";
 
 export const profileLocators = {
   // pages
-  profileMenuButton: (page: Page) => page.locator('button[data-dropdown-toggle="dropdown-user"]'), // DC01
+  profileMenuButton: (page: Page) => page.getByTestId("user-menu-btn"), // DC01
   profileButton: (page: Page) => page.getByTestId("profile-btn"), // LC
-  profileHeader: (page: Page) => page.locator("dt", { hasText: "Identitas Mahasiswa" }), // DC02
+  profileHeader: (page: Page) => page.locator("div", { hasText: "Identitas Mahasiswa" }), // DC02
   editProfilButton: (page: Page) => page.getByRole("button", { name: /Edit Profil/ }), // lC
   
   // upload
   uploadPhotoInput: (page: Page) => page.locator("div > input[type='file']"), // DC03
+  uploadPhotoButton: (page: Page) => page.locator(".uploadBtn"), // DC03 tombol baru
   uploadPhotoConfirmation: (page: Page) => page.locator("#uploadConfirm"),
   uploadPhotoFileName: (page: Page) => page.getByTestId("file-name"), // TO
   editProfileHeader: (page: Page) => page.getByRole("heading", { name: "Edit Profil" }),
@@ -22,8 +23,8 @@ export const profileLocators = {
     nimInput: (page: Page) => page.locator("#nim"),
     nikInput: (page: Page) => page.locator("#nik"),
     dateOfBirthInput: (page: Page) => page.locator("#datepicker"),
-    addressInput: (page: Page) => page.locator(`#address`),
-    phoneNumberInput: (page: Page) => page.locator(`#phone`),
+    addressInput: (page: Page) => page.locator(`input[name="address"]`),
+    phoneNumberInput: (page: Page) => page.locator(`input[name="phone"]`),
     npwpInput: (page: Page) => page.locator("#npwp"),
     expertiseInput: (page: Page) => page.locator("#keahlian"),
     bankInput: (page: Page) => page.locator("#bank"),

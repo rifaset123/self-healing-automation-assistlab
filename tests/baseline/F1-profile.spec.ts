@@ -51,6 +51,7 @@ test("Fitur 1 : Melengkapi profil [TC01-TC04]", async ({
 
   await test.step("[TC03] Mengunggah foto mahasiswa", async () => {
     await profilePage.uploadProfilePhoto(photoPath);
+    await profilePage.confirmUploadPhotoBtn();
     await profilePage.verifySuccessUploadProfilePhoto(photoPath);
     logger.log("✅ Pengguna berhasil mengunggah foto profil");
   });

@@ -35,6 +35,10 @@ export class ProfilePage extends BasePage {
     );
   }
 
+  async confirmUploadPhotoBtn() {
+    await this.locatorUtils.click(locators.profile.uploadPhotoButton(this.page));
+  }
+
   async verifySuccessUploadProfilePhoto(filePath: string) {
     const fileName = path.basename(filePath);
     // konfirmasi nama file
