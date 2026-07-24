@@ -33,20 +33,17 @@ in order. Maximum 3 fix-verify cycles.
    exact error and failing step.
 2. Analyze — read the spec and its dependencies; form an initial 
    hypothesis from the error.
-3. Investigate — open the specific locator file, page class, and 
-   spec section implicated by the error. Trace the code path from 
-   the failing step back to the underlying locator. Compare what 
-   the test expects against what the error output reveals. Report 
-   the specific lines of code and error details that inform your 
-   diagnosis.
+3. Investigate — navigate the browser to the relevant page and 
+   capture a snapshot. Compare the actual DOM state (elements, 
+   attributes, data-testid) against what the locators in the code 
+   expect. Report what you observed.
 4. Fix — apply the smallest change that restores correctness, 
-   grounded in the code evidence.
+   grounded in the snapshot evidence.
 5. Verify — re-run the failing test. If it still fails, return to 
    Investigate with new information. If the same approach fails 
    twice in a row, abandon that hypothesis and explore a different 
    angle — re-read the spec, check adjacent locators in the same 
-   file, or inspect other page classes that might share the broken 
-   pattern.
+   file, or inspect unrelated page sections that might have changed.
 
 # Hard Rules
 Violating any of these is unacceptable even if the test passes:

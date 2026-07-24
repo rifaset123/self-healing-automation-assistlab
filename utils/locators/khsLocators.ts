@@ -9,7 +9,7 @@ export const khsLocators = {
     }),
     
   // menambah KHS
-  addKhsButton: (page: Page) => page.getByTestId("add-khs-btn"),
+addKhsButton: (page: Page) => page.getByTestId("add-khs-btn"),
   addKhsInformationHeader: (page: Page) => page.getByRole("heading", {
       name: "📌 Informasi Fitur Upload KHS/Transkrip ",
       level: 2,

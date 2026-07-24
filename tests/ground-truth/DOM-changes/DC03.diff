@@ -55,7 +55,7 @@ File: AssistLab-Frontend-main/resources/views/student/profile/edit.blade.php
 + ... 
 + <button type="button" id="uploadBtn" class="hidden bg-[#0C003F] cursor-pointer hover:bg-blue-800 text-white font-semibold py-2 px-4 rounded-lg"
 +                                    onclick="loadFile()">Upload</button>
-+ ,,,
++ ...
 + <script>
 +   var handleFileSelected = function(event) {
 +       if (input.files.length > 0) {
